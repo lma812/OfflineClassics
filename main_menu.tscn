@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bblkhe0fd43xi"]
+
+[ext_resource type="Script" uid="uid://nihl883ib80q" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="MainMenu" type="Control" unique_id=1437744549]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1074780281]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=311176800]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1173078577]
+layout_mode = 2
+
+[node name="YahtzeeButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2115011799]
+layout_mode = 2
+text = "Yahtzee"
+
+[node name="SnakeButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1781382309]
+layout_mode = 2
+text = "Snake"
+
+[node name="2048Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1116723117]
+layout_mode = 2
+text = "2048"

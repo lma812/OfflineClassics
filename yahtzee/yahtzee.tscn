@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://blersdwk5iai6"]
+
+[ext_resource type="Script" uid="uid://csi34jra0fpfw" path="res://yahtzee/yahtzee.gd" id="1_04qx6"]
+
+[node name="Yahtzee" type="Control" unique_id=2016338471]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_04qx6")
+
+[node name="BacktoMenu" type="Button" parent="." unique_id=1731766908]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Back to Menu"
+
+[connection signal="pressed" from="BacktoMenu" to="." method="_on_backto_menu_pressed"]
