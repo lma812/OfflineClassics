@@ -1,8 +1,11 @@
 extends Control
-
+#const COLORS = preload("res://shared/theme/colors.tres")
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
+	#print(COLORS)
+	#print(COLORS.primary)
+	#$BacktoMenu.modulate = COLORS.primary
 	$BacktoMenu.pressed.connect(_on_back_button_pressed)
 	
 func _on_back_button_pressed():
