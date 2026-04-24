@@ -1,6 +1,31 @@
 [gd_scene format=3 uid="uid://blersdwk5iai6"]
 
 [ext_resource type="Script" uid="uid://csi34jra0fpfw" path="res://yahtzee/yahtzee.gd" id="1_04qx6"]
+[ext_resource type="Script" uid="uid://n8gmt4hx540o" path="res://yahtzee/components/dice_manager.gd" id="2_pjxqk"]
+[ext_resource type="Texture2D" uid="uid://bon042d0buaga" path="res://yahtzee/assets/dice_1.png" id="3_l742s"]
+[ext_resource type="Texture2D" uid="uid://ce46gmape3fts" path="res://yahtzee/assets/dice2.png" id="4_ry8me"]
+[ext_resource type="Texture2D" uid="uid://ctrdr6li8cga7" path="res://yahtzee/assets/dice3.png" id="5_o3plm"]
+[ext_resource type="Texture2D" uid="uid://bv5iwih016uiw" path="res://yahtzee/assets/dice4.png" id="6_xktqq"]
+[ext_resource type="Texture2D" uid="uid://doue0y76a0ml5" path="res://yahtzee/assets/dice5.png" id="7_n8fax"]
+[ext_resource type="Texture2D" uid="uid://bg1tfw7atxrfn" path="res://yahtzee/assets/dice6.png" id="8_mui5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l742s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weu33"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ko2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5x1b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_muleg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwliv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u15k8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cpy1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn1ps"]
 
 [node name="Yahtzee" type="Control" unique_id=2016338471]
 layout_mode = 3
@@ -11,6 +36,7 @@ size_flags_vertical = 8
 script = ExtResource("1_04qx6")
 
 [node name="StartScreen" type="Control" parent="." unique_id=868907154]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,5 +116,301 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
 text = "PLAY"
+
+[node name="GameScreen" type="Control" parent="." unique_id=784339345]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 354.0
+offset_bottom = 813.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DiceManager" type="Node" parent="GameScreen" unique_id=800305346]
+script = ExtResource("2_pjxqk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen" unique_id=669146043]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="spacing" type="Control" parent="GameScreen/VBoxContainer" unique_id=110501539]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="TopBar" type="HBoxContainer" parent="GameScreen/VBoxContainer" unique_id=1221321633]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 70
+
+[node name="BackButton" type="Button" parent="GameScreen/VBoxContainer/TopBar" unique_id=1214517281]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "←"
+
+[node name="GridContainer" type="GridContainer" parent="GameScreen/VBoxContainer/TopBar" unique_id=2066768739]
+layout_mode = 2
+
+[node name="ScoreHeader" type="HBoxContainer" parent="GameScreen/VBoxContainer/TopBar/GridContainer" unique_id=2082547333]
+layout_mode = 2
+
+[node name="PlayerLabel" type="Label" parent="GameScreen/VBoxContainer/TopBar/GridContainer/ScoreHeader" unique_id=627752579]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "YOU"
+
+[node name="spacing" type="Control" parent="GameScreen/VBoxContainer/TopBar/GridContainer/ScoreHeader" unique_id=241415681]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="VSLabel" type="Label" parent="GameScreen/VBoxContainer/TopBar/GridContainer/ScoreHeader" unique_id=1801537937]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "VS"
+
+[node name="spacing2" type="Control" parent="GameScreen/VBoxContainer/TopBar/GridContainer/ScoreHeader" unique_id=1318296840]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="BotLabel" type="Label" parent="GameScreen/VBoxContainer/TopBar/GridContainer/ScoreHeader" unique_id=1458956802]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Bot"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameScreen/VBoxContainer/TopBar/GridContainer" unique_id=483644499]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 58
+
+[node name="PlayerScore" type="Label" parent="GameScreen/VBoxContainer/TopBar/GridContainer/HBoxContainer" unique_id=1789630583]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "100"
+
+[node name="BotScore" type="Label" parent="GameScreen/VBoxContainer/TopBar/GridContainer/HBoxContainer" unique_id=1208995079]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "40"
+
+[node name="RestartButton" type="Button" parent="GameScreen/VBoxContainer/TopBar" unique_id=542858921]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "↻"
+
+[node name="spacing2" type="Control" parent="GameScreen/VBoxContainer" unique_id=286807340]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="ScoreGrid" type="GridContainer" parent="GameScreen/VBoxContainer" unique_id=623954078]
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 15
+columns = 5
+
+[node name="DiceIcon1" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1568427810]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_l742s")
+expand_mode = 3
+
+[node name="OnesPlayer" type="Button" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1173704616]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=688189617]
+layout_mode = 2
+
+[node name="OnesBot" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=917847729]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_l742s")
+
+[node name="OnesCategory" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1168482274]
+layout_mode = 2
+
+[node name="DiceIcon2" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1639195131]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("4_ry8me")
+expand_mode = 3
+
+[node name="TwosPlayer" type="Button" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1759265048]
+layout_mode = 2
+
+[node name="Spacer2" type="Control" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=205321781]
+layout_mode = 2
+
+[node name="TwosBot" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=246485447]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_weu33")
+
+[node name="TwosCategory" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=897405711]
+layout_mode = 2
+
+[node name="DiceIcon3" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1271810176]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("5_o3plm")
+expand_mode = 3
+
+[node name="ThreesPlayer" type="Button" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=146327827]
+layout_mode = 2
+
+[node name="Spacer3" type="Control" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=775570338]
+layout_mode = 2
+
+[node name="ThreesBot" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=107340150]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ko2g")
+
+[node name="ThreesCategory" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1074443097]
+layout_mode = 2
+
+[node name="DiceIcon4" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=20036666]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("6_xktqq")
+expand_mode = 3
+
+[node name="FoursPlayer" type="Button" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=2123148878]
+layout_mode = 2
+
+[node name="Spacer4" type="Control" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=2123310468]
+layout_mode = 2
+
+[node name="FoursBot" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=834690884]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u5x1b")
+
+[node name="FoursCategory" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1736048564]
+layout_mode = 2
+
+[node name="DiceIcon5" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=81700884]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("7_n8fax")
+expand_mode = 3
+
+[node name="FivesPlayer" type="Button" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=670632628]
+layout_mode = 2
+
+[node name="Spacer5" type="Control" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=431021850]
+layout_mode = 2
+
+[node name="FivesBot" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1773589700]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_muleg")
+
+[node name="FivesCategory" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=885936307]
+layout_mode = 2
+
+[node name="DiceIcon6" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=206841687]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("8_mui5e")
+expand_mode = 3
+
+[node name="SixesPlayer" type="Button" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1258767734]
+layout_mode = 2
+
+[node name="Spacer6" type="Control" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=294685471]
+layout_mode = 2
+
+[node name="SixesBot" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1400698106]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_rwliv")
+
+[node name="SixesCategory" type="Label" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1116766631]
+layout_mode = 2
+
+[node name="spacing3" type="Control" parent="GameScreen/VBoxContainer" unique_id=450264703]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="DiceRow" type="HBoxContainer" parent="GameScreen/VBoxContainer" unique_id=2134351749]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 18
+
+[node name="Dice1" type="Button" parent="GameScreen/VBoxContainer/DiceRow" unique_id=1039745161]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Dice2" type="Button" parent="GameScreen/VBoxContainer/DiceRow" unique_id=1424666277]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Dice3" type="Button" parent="GameScreen/VBoxContainer/DiceRow" unique_id=1846563478]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Dice4" type="Button" parent="GameScreen/VBoxContainer/DiceRow" unique_id=590090838]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="Dice5" type="Button" parent="GameScreen/VBoxContainer/DiceRow" unique_id=486956663]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="spacing4" type="Control" parent="GameScreen/VBoxContainer" unique_id=1396029121]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="GameScreen/VBoxContainer" unique_id=569645434]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 11
+
+[node name="RollButton" type="Button" parent="GameScreen/VBoxContainer/BottomBar" unique_id=188250950]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "ROLL"
+
+[node name="Roll1" type="Label" parent="GameScreen/VBoxContainer/BottomBar" unique_id=1493237506]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_u15k8")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Roll2" type="Label" parent="GameScreen/VBoxContainer/BottomBar" unique_id=864771138]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_6cpy1")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Roll3" type="Label" parent="GameScreen/VBoxContainer/BottomBar" unique_id=1813725280]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_yn1ps")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="StartScreen/Container/VBoxContainer/BackButton" to="." method="_on_backto_menu_pressed"]
