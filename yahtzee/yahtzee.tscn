@@ -7,12 +7,88 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_vertical = 8
 script = ExtResource("1_04qx6")
 
-[node name="BacktoMenu" type="Button" parent="." unique_id=1731766908]
+[node name="StartScreen" type="Control" parent="." unique_id=868907154]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 355.0
+offset_bottom = 815.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Control" parent="StartScreen" unique_id=2115660758]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartScreen/Container" unique_id=960919546]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -3.0
+offset_top = -76.0
+offset_right = 391.0
+offset_bottom = 773.0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BackButton" type="Button" parent="StartScreen/Container/VBoxContainer" unique_id=1731766908]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 20
 text = "Back to Menu"
 
-[connection signal="pressed" from="BacktoMenu" to="." method="_on_backto_menu_pressed"]
+[node name="Control" type="Control" parent="StartScreen/Container/VBoxContainer" unique_id=1020675510]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="StartScreen/Container/VBoxContainer" unique_id=1140914830]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "YATHZEE"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="StartScreen/Container/VBoxContainer" unique_id=71316544]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="DifficultyLabel" type="Label" parent="StartScreen/Container/VBoxContainer" unique_id=830661685]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "DIFFICULTY"
+horizontal_alignment = 1
+
+[node name="Control4" type="Control" parent="StartScreen/Container/VBoxContainer" unique_id=1580534542]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="DifficultyValueLabel" type="Label" parent="StartScreen/Container/VBoxContainer" unique_id=2146673490]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="StartScreen/Container/VBoxContainer" unique_id=425307488]
+layout_mode = 2
+max_value = 2.0
+value = 1.0
+
+[node name="Control3" type="Control" parent="StartScreen/Container/VBoxContainer" unique_id=42652746]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="StartScreen/Container/VBoxContainer" unique_id=1383828625]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "PLAY"
+
+[connection signal="pressed" from="StartScreen/Container/VBoxContainer/BackButton" to="." method="_on_backto_menu_pressed"]
