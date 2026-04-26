@@ -1,3 +1,57 @@
 [gd_scene format=3 uid="uid://b1t8k7wsaeohy"]
 
-[node name="SnakeGame_tscn" type="Node2D" unique_id=1542866269]
+[sub_resource type="GDScript" id="GDScript_sfmvt"]
+script/source = "extends Container
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="SnakeGame_tscn" type="Control" unique_id=371078955]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=961432982]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=229755904]
+limit_left = 0
+limit_top = 0
+limit_right = 180
+limit_bottom = 320
+metadata/_edit_lock_ = true
+
+[node name="Body" type="BoxContainer" parent="." unique_id=884235271]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -160.0
+offset_right = 90.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_sfmvt")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Body" unique_id=1740678550]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true

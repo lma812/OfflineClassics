@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c5rw2x6b5k5ye"]
 
-[ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/snake.gd" id="1_j2kkt"]
-[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_iujm3"]
-[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="3_rwqi7"]
+[ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/components/ui/start_screen.gd" id="1_fvr2q"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="2_mic71"]
+[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_bcpx1"]
 
 [sub_resource type="GDScript" id="GDScript_iujm3"]
 script/source = "extends Container
@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwqi7"]
-texture = ExtResource("3_iujm3")
+texture = ExtResource("3_bcpx1")
 
 [node name="Snake" type="Control" unique_id=1993310050]
 layout_mode = 3
@@ -91,7 +91,7 @@ anchor_bottom = 1.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j2kkt")
+script = ExtResource("1_fvr2q")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1811340095]
 limit_left = 0
@@ -134,7 +134,7 @@ offset_bottom = 28.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.3529412, 0.36078432, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.4762209, 0, 0.7921569)
-theme_override_fonts/font = ExtResource("3_rwqi7")
+theme_override_fonts/font = ExtResource("2_mic71")
 theme_override_font_sizes/font_size = 50
 text = "SNAKE"
 horizontal_alignment = 1
@@ -163,7 +163,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_rwqi7")
+theme_override_fonts/font = ExtResource("2_mic71")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
@@ -177,7 +177,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_rwqi7")
+theme_override_fonts/font = ExtResource("2_mic71")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
