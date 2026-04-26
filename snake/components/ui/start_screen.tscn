@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c5rw2x6b5k5ye"]
 
-[ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/components/ui/start_screen.gd" id="1_fvr2q"]
-[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="2_mic71"]
-[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_bcpx1"]
+[ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/components/ui/start_screen.gd" id="1_rx5u5"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="2_ahccb"]
+[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_4gf48"]
 
 [sub_resource type="GDScript" id="GDScript_iujm3"]
 script/source = "extends Container
@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwqi7"]
-texture = ExtResource("3_bcpx1")
+texture = ExtResource("3_4gf48")
 
 [node name="Snake" type="Control" unique_id=1993310050]
 layout_mode = 3
@@ -91,29 +91,25 @@ anchor_bottom = 1.0
 offset_right = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fvr2q")
+script = ExtResource("1_rx5u5")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1811340095]
 limit_left = 0
 limit_top = 0
-limit_right = 176
-limit_bottom = 320
+limit_right = 720
+limit_bottom = 1280
 
 [node name="Body" type="BoxContainer" parent="." unique_id=1749149686]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -160.0
-offset_right = 90.0
-offset_bottom = 160.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.555542
+offset_right = 4.0
+offset_bottom = 3.555542
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_iujm3")
-metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="Body" unique_id=464182794]
 layout_mode = 2
@@ -134,8 +130,8 @@ offset_bottom = 28.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.3529412, 0.36078432, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.4762209, 0, 0.7921569)
-theme_override_fonts/font = ExtResource("2_mic71")
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("2_ahccb")
+theme_override_font_sizes/font_size = 200
 text = "SNAKE"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -143,19 +139,20 @@ vertical_alignment = 1
 [node name="Menu" type="VBoxContainer" parent="." unique_id=1305371886]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.51100004
-anchor_top = 0.71900004
-anchor_right = 0.51100004
-anchor_bottom = 0.71900004
-offset_left = -51.980003
-offset_top = -38.080017
-offset_right = 52.019997
-offset_bottom = 37.919983
+anchor_left = 0.5
+anchor_top = 0.74100006
+anchor_right = 0.5
+anchor_bottom = 0.74100006
+offset_left = -163.00635
+offset_top = -116.4801
+offset_right = 154.4674
+offset_bottom = 115.5199
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
 
 [node name="StartGame" type="Button" parent="Menu" unique_id=1846626844]
 custom_minimum_size = Vector2(50, 30)
@@ -163,8 +160,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_mic71")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("2_ahccb")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rwqi7")
@@ -177,8 +174,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_mic71")
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("2_ahccb")
+theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rwqi7")
@@ -188,15 +185,15 @@ metadata/_edit_lock_ = true
 
 [node name="Panel" type="Panel" parent="." unique_id=904440793]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.462
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.462
-offset_left = -40.0
-offset_top = -35.839996
-offset_right = 40.0
-offset_bottom = 36.160004
+anchor_bottom = 0.5
+offset_left = -104.177795
+offset_top = -93.76001
+offset_right = 104.177795
+offset_bottom = 93.76001
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rwqi7")
