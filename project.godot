@@ -21,10 +21,12 @@ GameColors="*uid://pi2216hvhymn"
 
 [display]
 
-window/size/viewport_width=393
-window/size/viewport_height=852
-window/stretch/mode="canvas_items"
+window/size/viewport_width=180
+window/size/viewport_height=320
+window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+window/handheld/orientation=1
+window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
 
 [physics]
 
@@ -32,5 +34,7 @@ window/stretch/aspect="expand"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.32915837, 0.3291584, 0.3291584, 1)

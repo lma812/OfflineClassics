@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://c5rw2x6b5k5ye"]
+
+[ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/snake.gd" id="1_j2kkt"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="3_rwqi7"]
+[ext_resource type="Script" uid="uid://m2cbvuno8mm7" path="res://snake/start_game.gd" id="3_vtpab"]
+
+[sub_resource type="GDScript" id="GDScript_iujm3"]
+script/source = "extends Container
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iujm3"]
+bg_color = Color(0.54509807, 0.5372549, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[node name="Snake" type="Control" unique_id=1993310050]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j2kkt")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1811340095]
+limit_left = 0
+limit_top = 0
+limit_right = 176
+limit_bottom = 320
+
+[node name="Body" type="BoxContainer" parent="." unique_id=1749149686]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -160.0
+offset_right = 90.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_iujm3")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Body" unique_id=464182794]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="." unique_id=339118684]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.503
+anchor_top = 0.22500001
+anchor_right = 0.503
+anchor_bottom = 0.22500001
+offset_left = -74.54
+offset_top = -24.0
+offset_right = 69.46
+offset_bottom = 28.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.3529412, 0.36078432, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.4762209, 0, 0.7921569)
+theme_override_fonts/font = ExtResource("3_rwqi7")
+theme_override_font_sizes/font_size = 50
+text = "SNAKE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="." unique_id=1305371886]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51100004
+anchor_top = 0.71900004
+anchor_right = 0.51100004
+anchor_bottom = 0.71900004
+offset_left = -51.980003
+offset_top = -38.080017
+offset_right = 52.019997
+offset_bottom = 37.919983
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="StartGame" type="Button" parent="Menu" unique_id=1846626844]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.60784316, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rwqi7")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
+text = "Start Game"
+script = ExtResource("3_vtpab")
+metadata/_edit_lock_ = true
+
+[node name="BacktoMenu" type="Button" parent="Menu" unique_id=870389785]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.60784316, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rwqi7")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
+text = "Back to Menu"
+script = ExtResource("3_vtpab")
+metadata/_edit_lock_ = true
