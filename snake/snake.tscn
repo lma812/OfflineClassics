@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c5rw2x6b5k5ye"]
 
 [ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/snake.gd" id="1_j2kkt"]
+[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_iujm3"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="3_rwqi7"]
-[ext_resource type="Script" uid="uid://m2cbvuno8mm7" path="res://snake/start_game.gd" id="3_vtpab"]
 
 [sub_resource type="GDScript" id="GDScript_iujm3"]
 script/source = "extends Container
@@ -33,6 +33,55 @@ expand_margin_left = 5.0
 expand_margin_right = 5.0
 shadow_size = 1
 shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtpab"]
+bg_color = Color(0.41184112, 0.4043988, 0.46252674, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwqi7"]
+bg_color = Color(0.51284903, 0.5049625, 0.567617, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+shadow_size = 1
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="GDScript" id="GDScript_vtpab"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwqi7"]
+texture = ExtResource("3_iujm3")
 
 [node name="Snake" type="Control" unique_id=1993310050]
 layout_mode = 3
@@ -78,9 +127,9 @@ anchor_left = 0.503
 anchor_top = 0.22500001
 anchor_right = 0.503
 anchor_bottom = 0.22500001
-offset_left = -74.54
+offset_left = -72.528
 offset_top = -24.0
-offset_right = 69.46
+offset_right = 71.472
 offset_bottom = 28.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.3529412, 0.36078432, 1)
@@ -112,21 +161,42 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.60784316, 0, 0, 1)
+theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rwqi7")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rwqi7")
 text = "Start Game"
-script = ExtResource("3_vtpab")
+script = SubResource("GDScript_vtpab")
 metadata/_edit_lock_ = true
 
 [node name="BacktoMenu" type="Button" parent="Menu" unique_id=870389785]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.60784316, 0, 0, 1)
+theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_rwqi7")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 14
 theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rwqi7")
 text = "Back to Menu"
-script = ExtResource("3_vtpab")
+script = SubResource("GDScript_vtpab")
 metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="." unique_id=904440793]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.462
+anchor_right = 0.5
+anchor_bottom = 0.462
+offset_left = -40.0
+offset_top = -35.839996
+offset_right = 40.0
+offset_bottom = 36.160004
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_rwqi7")
