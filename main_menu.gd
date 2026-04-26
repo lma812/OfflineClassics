@@ -9,7 +9,7 @@ func _on_yahtzee_pressed():
 	get_tree().change_scene_to_file("res://yahtzee/yahtzee.tscn")
 
 func _on_snake_pressed():
-	get_tree().change_scene_to_file("res://snake/snake.tscn")
+	get_tree().change_scene_to_file("res://snake/components/ui/start_screen.tscn")
 #
 #func _on_2048_pressed():
 	#get_tree().change_scene_to_file("res://game_2048/game_2048.tscn")
