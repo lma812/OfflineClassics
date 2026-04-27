@@ -15,6 +15,7 @@ const BOARD_X = 100
 const BOARD_Y = 300
 
 func _ready() -> void:
+	print("2048 loaded")
 	setup_background()
 	grid = []
 	for row in range(GRID_SIZE):
