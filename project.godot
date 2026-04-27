@@ -21,8 +21,8 @@ GameColors="*uid://pi2216hvhymn"
 
 [display]
 
-window/size/viewport_width=393
-window/size/viewport_height=852
+window/size/viewport_width=720
+window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
