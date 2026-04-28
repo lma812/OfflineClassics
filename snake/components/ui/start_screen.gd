@@ -8,6 +8,7 @@ func _ready():
 	#$BacktoMenu.modulate = COLORS.primary
 	$Menu/BacktoMenu.pressed.connect(_on_back_button_pressed)
 	$Menu/StartGame.pressed.connect(_on_start_game_button_pressed)
+	$Hud/ScoreLabel.hide()
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 

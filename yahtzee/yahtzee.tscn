@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://blersdwk5iai6"]
 
 [ext_resource type="Script" uid="uid://csi34jra0fpfw" path="res://yahtzee/yahtzee.gd" id="1_04qx6"]
-[ext_resource type="Script" path="res://yahtzee/components/dice_manager.gd" id="2_pjxqk"]
+[ext_resource type="Script" uid="uid://n8gmt4hx540o" path="res://yahtzee/components/dice_manager.gd" id="2_pjxqk"]
 [ext_resource type="Texture2D" uid="uid://bon042d0buaga" path="res://yahtzee/assets/dice_1.png" id="3_l742s"]
-[ext_resource type="Script" path="res://yahtzee/components/score_manager.gd" id="3_o3plm"]
+[ext_resource type="Script" uid="uid://cvkmilv5233d5" path="res://yahtzee/components/score_manager.gd" id="3_o3plm"]
 [ext_resource type="Texture2D" uid="uid://ce46gmape3fts" path="res://yahtzee/assets/dice2.png" id="4_ry8me"]
-[ext_resource type="Script" path="res://yahtzee/components/bot_engine.gd" id="4_xktqq"]
+[ext_resource type="Script" uid="uid://di6bda6mw7dd6" path="res://yahtzee/components/bot_engine.gd" id="4_xktqq"]
+[ext_resource type="PackedScene" uid="uid://udyht2080hyc" path="res://yahtzee/components/hud.tscn" id="5_n8fax"]
 [ext_resource type="Texture2D" uid="uid://ctrdr6li8cga7" path="res://yahtzee/assets/dice3.png" id="5_o3plm"]
 [ext_resource type="Texture2D" uid="uid://bv5iwih016uiw" path="res://yahtzee/assets/dice4.png" id="6_xktqq"]
 [ext_resource type="Texture2D" uid="uid://doue0y76a0ml5" path="res://yahtzee/assets/dice5.png" id="7_n8fax"]
@@ -263,7 +264,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1.0
+offset_top = 93.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -378,6 +379,8 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 45
 text = "↻"
+
+[node name="Hud" parent="GameScreen/VBoxContainer/TopBar/RestartButton" unique_id=502157937 instance=ExtResource("5_n8fax")]
 
 [node name="spacing2" type="Control" parent="GameScreen/VBoxContainer" unique_id=286807340]
 custom_minimum_size = Vector2(0, 75)

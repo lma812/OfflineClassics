@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bblkhe0fd43xi"]
 
 [ext_resource type="Script" uid="uid://nihl883ib80q" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_fu7sn"]
+[ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="3_jix8l"]
 
 [node name="MainMenu" type="Control" unique_id=1437744549]
 layout_mode = 3
@@ -18,10 +20,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=311176800]
 layout_mode = 2
 theme_override_constants/separation = 21
+metadata/_edit_lock_ = true
 
 [node name="YahtzeeButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2115011799]
 custom_minimum_size = Vector2(250, 50)
@@ -41,17 +45,36 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "2048"
 
-[node name="TitleLabel" type="Label" parent="." unique_id=1173078577]
+[node name="TitleLabel" type="Label" parent="." unique_id=1582386441]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -267.0
+offset_top = 265.56
+offset_right = 273.0
+offset_bottom = 342.56
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.14901961, 0.078431375, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.72156864, 0, 1)
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 85
+text = "OFFLINE CLASSICS"
+
+[node name="Label" type="Label" parent="." unique_id=643369758]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.186
+anchor_top = 0.33100003
 anchor_right = 0.5
-anchor_bottom = 0.186
-offset_left = -68.0
-offset_top = -12.52
-offset_right = 72.0
-offset_bottom = 10.48
+anchor_bottom = 0.33100003
+offset_left = -21.0
+offset_top = -10.680054
+offset_right = 19.0
+offset_bottom = 12.319946
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.34117648, 0.17254902, 1)
-text = "OFFLINE CLASSICS"
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.52156866, 0.49803922, 1)
+theme_override_fonts/font = ExtResource("3_jix8l")
+theme_override_font_sizes/font_size = 25
+text = "YOUR FAVORITE GAMES COMPLETELY OFFLINE!"
