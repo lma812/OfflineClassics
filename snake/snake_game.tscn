@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b1t8k7wsaeohy"]
 
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="2_0bs24"]
 [ext_resource type="Script" uid="uid://d2y8igf4xcu5y" path="res://snake/components/engine/movement_manager.gd" id="2_hhjwv"]
 [ext_resource type="PackedScene" uid="uid://boj2y2q616t7o" path="res://snake/components/snake_segment.tscn" id="3_0bs24"]
 [ext_resource type="Script" uid="uid://wn6llgb7hv2w" path="res://snake/components/engine/game_state_manager.gd" id="4_4n80s"]
@@ -37,12 +38,27 @@ offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=480345361]
+[node name="GameOver" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=480345361]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.05882353, 0.14509805, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.83137256, 0, 1)
+theme_override_fonts/font = ExtResource("2_0bs24")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=852199278]
+[node name="Reason" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=955618770]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0bs24")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=852199278]
 layout_mode = 2
 text = "Restart"
+
+[node name="BacktoMenu" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=615893119]
+layout_mode = 2
+text = "Back to Menu"
 
 [node name="Hud" parent="." unique_id=502157937 instance=ExtResource("6_dv2sq")]
 
@@ -72,4 +88,5 @@ offset_bottom = 100.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhjwv")
 
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/Button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/BacktoMenu" to="." method="_on_back_button_pressed"]

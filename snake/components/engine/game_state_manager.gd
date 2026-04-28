@@ -5,6 +5,7 @@ class_name GameStateManager
 @onready var game_over_ui = $GameOverScreen
 
 
+
 var game_active: bool = true
 var score: int
 
@@ -62,12 +63,17 @@ func handle_game_over(reason: String):
 func show_game_over_screen(reason: String):
 	game_over_ui.show()
 	# Update the label to say why they died
-	game_over_ui.get_node("VBoxContainer/Label").text = "GAME OVER\nHit " + reason
+	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
+	game_over_ui.get_node("VBoxContainer/Reason").text = "Hit " + reason
 
 # Connect the Button's "pressed" signal to this function
 func _on_restart_button_pressed():
 	# Reloads the current scene to start fresh
 	print("scene reload")
 	get_tree().reload_current_scene()
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+
 	
 #Pause state
