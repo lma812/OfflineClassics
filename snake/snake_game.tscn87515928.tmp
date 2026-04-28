@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://b1t8k7wsaeohy"]
+
+[ext_resource type="Script" uid="uid://d2y8igf4xcu5y" path="res://snake/components/engine/movement_manager.gd" id="2_hhjwv"]
+[ext_resource type="PackedScene" uid="uid://boj2y2q616t7o" path="res://snake/components/snake_segment.tscn" id="3_0bs24"]
+[ext_resource type="Script" uid="uid://wn6llgb7hv2w" path="res://snake/components/engine/game_state_manager.gd" id="4_4n80s"]
+[ext_resource type="Script" uid="uid://qyahu6d431h8" path="res://snake/components/engine/collision_manager.gd" id="5_dv2sq"]
+[ext_resource type="PackedScene" uid="uid://0dc8ys8q44mn" path="res://snake/components/ui/hud.tscn" id="6_dv2sq"]
+
+[node name="SnakeGame" type="Node" unique_id=78538605]
+
+[node name="MoveTimer" type="Timer" parent="." unique_id=1323109070]
+wait_time = 0.115
+autostart = true
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=1781855235]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen" unique_id=1975557003]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -29.0
+offset_right = 46.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=480345361]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=852199278]
+layout_mode = 2
+text = "Restart"
+
+[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("6_dv2sq")]
+
+[node name="Background2" type="Panel" parent="." unique_id=849183616]
+offset_left = 72.0
+offset_top = 320.0
+offset_right = 648.0
+offset_bottom = 960.0
+
+[node name="MovementManager" type="Node2D" parent="Background2" unique_id=272073539]
+unique_name_in_owner = true
+script = ExtResource("2_hhjwv")
+segment_scene = ExtResource("3_0bs24")
+
+[node name="GameStateManager" type="Node2D" parent="Background2" unique_id=631612542]
+unique_name_in_owner = true
+script = ExtResource("4_4n80s")
+
+[node name="CollisionManager" type="Node2D" parent="Background2" unique_id=1379342944]
+unique_name_in_owner = true
+position = Vector2(-243, -413)
+script = ExtResource("5_dv2sq")
+
+[connection signal="timeout" from="MoveTimer" to="Background2/GameStateManager" method="_on_move_timer_timeout"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Button" to="Background2/GameStateManager" method="_on_restart_button_pressed"]

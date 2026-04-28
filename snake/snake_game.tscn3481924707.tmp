@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://b1t8k7wsaeohy"]
+
+[ext_resource type="Script" uid="uid://qyahu6d431h8" path="res://snake/components/engine/collision_manager.gd" id="3_qrqmu"]
+[ext_resource type="Script" uid="uid://d2y8igf4xcu5y" path="res://snake/components/engine/movement_manager.gd" id="4_qrqmu"]
+[ext_resource type="PackedScene" uid="uid://boj2y2q616t7o" path="res://snake/components/snake_segment.tscn" id="5_0bs24"]
+[ext_resource type="Texture2D" uid="uid://g7bn7uqoyabr" path="res://snake/assets/craftpix-net-846754-free-green-zone-tileset-pixel-art/1 Tiles/Tile_04.png" id="6_0bs24"]
+[ext_resource type="Script" uid="uid://wn6llgb7hv2w" path="res://snake/components/engine/game_state_manager.gd" id="6_4n80s"]
+
+[node name="SnakeGame" type="Control" unique_id=1509562225]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GameStateManager" type="Node2D" parent="." unique_id=57784611]
+unique_name_in_owner = true
+position = Vector2(-3.0517578e-05, 0)
+script = ExtResource("6_4n80s")
+
+[node name="MovementManager" type="Node2D" parent="." unique_id=1007363499]
+unique_name_in_owner = true
+position = Vector2(25, 257)
+script = ExtResource("4_qrqmu")
+segment_scene = ExtResource("5_0bs24")
+
+[node name="CollisionManager" type="Node2D" parent="." unique_id=683914333]
+unique_name_in_owner = true
+position = Vector2(25, 257)
+script = ExtResource("3_qrqmu")
+
+[node name="MoveTimer" type="Timer" parent="." unique_id=1323109070]
+wait_time = 0.115
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1605541903]
+position = Vector2(360, 624)
+scale = Vector2(20.9375, 22.937502)
+texture = ExtResource("6_0bs24")
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=1781855235]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen" unique_id=1975557003]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -29.0
+offset_right = 46.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=480345361]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=852199278]
+layout_mode = 2
+text = "Restart"
+
+[connection signal="timeout" from="MoveTimer" to="GameStateManager" method="_on_move_timer_timeout"]
+[connection signal="pressed" from="GameOverScreen/VBoxContainer/Button" to="GameStateManager" method="_on_restart_button_pressed"]
