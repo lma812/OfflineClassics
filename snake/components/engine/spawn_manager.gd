@@ -1,11 +1,17 @@
-extends Node
+extends Node2D
+@onready var MovementManager = $"../MovementManager"
 
+var regen_food: bool = true
+var food_pos: Vector2i
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func spawn_food():
+	while(regen_food):
+		regen_food = false
+		food_pos = Vector2i(randi_range(0, MovementManager.GRID_WIDTH-1), randi_range(0, MovementManager.GRID_HEIGHT-1))
+		print(food_pos)
+		for i in MovementManager.body_coords:
+			if food_pos == i:
+				regen_food = true
+	$Food.position = (food_pos * MovementManager.CELL_SIZE) 
+	print($Food.position)
+	regen_food = true

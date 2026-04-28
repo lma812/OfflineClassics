@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cnlrb6njmli6v"]
+
+[node name="Score" type="CanvasLayer" unique_id=1518576630]
+
+[node name="Panel" type="Panel" parent="." unique_id=623464598]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="." unique_id=924483855]
+offset_right = 40.0
+offset_bottom = 23.0

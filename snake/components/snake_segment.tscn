@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://boj2y2q616t7o"]
+
+[ext_resource type="Texture2D" uid="uid://d3ts8rj8xrqfu" path="res://snake/assets/craftpix-net-846754-free-green-zone-tileset-pixel-art/1 Tiles/Tile_24.png" id="1_daqjo"]
+
+[node name="SnakeSegment" type="Node2D" unique_id=947479107]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1597459714]
+position = Vector2(16, 16)
+texture = ExtResource("1_daqjo")
