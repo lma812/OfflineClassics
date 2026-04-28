@@ -35,13 +35,13 @@ func _on_move_timer_timeout():
 			MovementManager.move_snake(next_pos, false)
 		"consumable":
 			MovementManager.move_snake(next_pos, true)
+			#Score
 			score+=1
 			$Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)
 			SpawnManager.spawn_food()
 		"wall", "self":
 			handle_game_over("wall or something")
 
-#Score
 
 #Food/powerup positions
 
