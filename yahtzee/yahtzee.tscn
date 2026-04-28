@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://blersdwk5iai6"]
 
 [ext_resource type="Script" uid="uid://csi34jra0fpfw" path="res://yahtzee/yahtzee.gd" id="1_04qx6"]
-[ext_resource type="Script" uid="uid://n8gmt4hx540o" path="res://yahtzee/components/dice_manager.gd" id="2_pjxqk"]
+[ext_resource type="Script" path="res://yahtzee/components/dice_manager.gd" id="2_pjxqk"]
 [ext_resource type="Texture2D" uid="uid://bon042d0buaga" path="res://yahtzee/assets/dice_1.png" id="3_l742s"]
-[ext_resource type="Script" uid="uid://cvkmilv5233d5" path="res://yahtzee/components/score_manager.gd" id="3_o3plm"]
+[ext_resource type="Script" path="res://yahtzee/components/score_manager.gd" id="3_o3plm"]
 [ext_resource type="Texture2D" uid="uid://ce46gmape3fts" path="res://yahtzee/assets/dice2.png" id="4_ry8me"]
-[ext_resource type="Script" uid="uid://di6bda6mw7dd6" path="res://yahtzee/components/bot_engine.gd" id="4_xktqq"]
+[ext_resource type="Script" path="res://yahtzee/components/bot_engine.gd" id="4_xktqq"]
 [ext_resource type="Texture2D" uid="uid://ctrdr6li8cga7" path="res://yahtzee/assets/dice3.png" id="5_o3plm"]
 [ext_resource type="Texture2D" uid="uid://bv5iwih016uiw" path="res://yahtzee/assets/dice4.png" id="6_xktqq"]
 [ext_resource type="Texture2D" uid="uid://doue0y76a0ml5" path="res://yahtzee/assets/dice5.png" id="7_n8fax"]
@@ -436,6 +436,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 35
 theme_override_styles/normal = SubResource("StyleBoxFlat_l742s")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DiceIcon2" type="TextureRect" parent="GameScreen/VBoxContainer/ScoreGrid" unique_id=1639195131]
 custom_minimum_size = Vector2(100, 100)
