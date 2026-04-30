@@ -15,7 +15,6 @@ const BOARD_X = 100
 const BOARD_Y = 300
 
 func _ready() -> void:
-	print("2048 loaded")
 	setup_background()
 	grid = []
 	for row in range(GRID_SIZE):
@@ -191,7 +190,7 @@ func spawn_tile():
 	if empty_cells.is_empty():
 		return
 	var random_cell = empty_cells[randi() % empty_cells.size()]
-	grid[random_cell.x][random_cell.y] = 4 if randf() > 0.8 else 2
+	grid[random_cell.x][random_cell.y] = 4 if randf() > 0.9 else 2
 
 func update_visuals():
 	var cells = $GridContainer.get_children()
