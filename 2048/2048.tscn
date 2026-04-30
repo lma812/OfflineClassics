@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://ot2gud5t0brn" path="res://2048/MoveManager.gd" id="3_jtqfd"]
 [ext_resource type="Script" uid="uid://cvidj1864ksqx" path="res://2048/InputManager.gd" id="4_hbtxd"]
 [ext_resource type="Script" uid="uid://lm204c5cur2l" path="res://2048/ScoreManager.gd" id="5_t1iod"]
+[ext_resource type="PackedScene" uid="uid://dr7jq3plmr4ad" path="res://2048/hud.tscn" id="6_rqu1e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g0y7"]
 bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
@@ -141,3 +142,5 @@ size_flags_vertical = 1
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_rqu1e")
 horizontal_alignment = 2
+
+[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("6_rqu1e")]

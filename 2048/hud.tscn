@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dr7jq3plmr4ad"]
+
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="1_klc5f"]
+
+[node name="Hud" type="CanvasLayer" unique_id=502157937]
+
+[node name="Panel" type="Panel" parent="." unique_id=2049125945]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="." unique_id=1601378875]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 40.0
+offset_right = 98.0
+offset_bottom = 92.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.14901961, 0.078431375, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.72156864, 0, 1)
+theme_override_fonts/font = ExtResource("1_klc5f")
+theme_override_font_sizes/font_size = 75
+text = "OFFLINE CLASSICS"
