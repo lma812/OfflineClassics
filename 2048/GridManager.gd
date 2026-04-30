@@ -7,7 +7,7 @@ const TILE_GAP := 10
 var grid: Array = []
 var score := 0
 
-@onready var grid_container = $"../CenterContainer/Panel/MarginContainer/VBoxContainer/GridContainer"
+@onready var grid_container = $"../CenterContainer/VBoxContainer/GridContainer"
 
 func _ready() -> void:
 	grid_container.columns = GRID_SIZE

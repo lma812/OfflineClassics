@@ -5,7 +5,7 @@ var score_label: Label
 var timer_label: Label
 
 func _ready() -> void:
-	var vbox = get_parent().get_node("CenterContainer/Panel/MarginContainer/VBoxContainer")
+	var vbox = get_parent().get_node("CenterContainer/VBoxContainer")
 	
 	score_label = vbox.get_node("ScoreRow/ScoreLabel")
 	timer_label = vbox.get_node("ScoreRow/TimerLabel")
