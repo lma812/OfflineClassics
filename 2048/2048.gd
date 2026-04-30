@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 const GRID_SIZE = 4
 const TILE_SIZE = 120
@@ -11,11 +11,18 @@ var score = 0
 var timer_label: Label
 var score_label: Label
 
-const BOARD_X = 100
-const BOARD_Y = 300
+var BOARD_X = 100
+var BOARD_Y = 300
 
 func _ready() -> void:
+	var viewport = Vector2(
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height")
+)
+	var board_size = GRID_SIZE * TILE_SIZE + (GRID_SIZE - 1) * TILE_GAP
 	setup_background()
+	BOARD_X = (viewport.x - board_size) / 2
+	BOARD_Y = (viewport.y - board_size) / 2
 	grid = []
 	for row in range(GRID_SIZE):
 		grid.append([])
@@ -48,25 +55,33 @@ func setup_visual_grid():
 func setup_background():
 	var canvas = $CanvasLayer
 	canvas.layer = -1
+	
+	var viewport = Vector2(
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height")
+)
+	var board_size = GRID_SIZE * TILE_SIZE + (GRID_SIZE - 1) * TILE_GAP
+	var cx = (viewport.x - board_size) / 2  # use cx/cy locally
+	var cy = (viewport.y - board_size) / 2
+	
 	var bg = ColorRect.new()
 	bg.color = Color("#284B63")
 	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
 	canvas.add_child(bg)
-	var board_size = GRID_SIZE * TILE_SIZE + (GRID_SIZE - 1) * TILE_GAP
+	
 	var padding = 20
 	var border = 6
 	var border_rect = ColorRect.new()
 	border_rect.color = Color("#F4F9E9")
-	border_rect.position = Vector2(BOARD_X - padding - border, BOARD_Y - 80 - padding - border)
+	border_rect.position = Vector2(cx - padding - border, cy - 80 - padding - border)
 	border_rect.size = Vector2(
 		board_size + (padding + border) * 2,
 		board_size + 80 + 60 + (padding + border) * 2
 	)
 	canvas.add_child(border_rect)
-	
 	var inner_bg = ColorRect.new()
 	inner_bg.color = Color("#284B63")
-	inner_bg.position = Vector2(BOARD_X - padding, BOARD_Y - 80 - padding)
+	inner_bg.position = Vector2(cx - padding, cy - 80 - padding)
 	inner_bg.size = Vector2(board_size + padding * 2, board_size + 80 + 60 + padding * 2)
 	canvas.add_child(inner_bg)
 	
@@ -74,7 +89,7 @@ func setup_background():
 	title.text = "2048"
 	title.add_theme_font_size_override("font_size", 60)
 	title.add_theme_color_override("font_color", Color("#F4F9E9"))
-	title.position = Vector2(BOARD_X + 185, BOARD_Y - 90)
+	title.position = Vector2(cx + 185, cy - 90)
 	canvas.add_child(title)
 	
 	score_label = Label.new()
@@ -82,7 +97,7 @@ func setup_background():
 	score_label.add_theme_font_size_override("font_size", 28)
 	score_label.add_theme_color_override("font_color", Color("#F4F9E9"))
 	score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	score_label.position = Vector2(BOARD_X, BOARD_Y + board_size + 15)
+	score_label.position = Vector2(cx, cy + board_size + 15)
 	score_label.size = Vector2(255, 40)
 	canvas.add_child(score_label)
 	
@@ -91,14 +106,14 @@ func setup_background():
 	timer_label.add_theme_font_size_override("font_size", 28)
 	timer_label.add_theme_color_override("font_color", Color("#F4F9E9"))
 	timer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-	timer_label.position = Vector2(BOARD_X + 255, BOARD_Y + board_size + 15)
+	timer_label.position = Vector2(cx + 255, cy + board_size + 15)
 	timer_label.size = Vector2(255, 40)
 	canvas.add_child(timer_label)
 	
 	var options_btn = Button.new()
 	options_btn.text = "⚙"
 	options_btn.add_theme_font_size_override("font_size", 36)
-	options_btn.position = Vector2(BOARD_X + 430, BOARD_Y - 90)
+	options_btn.position = Vector2(cx + 430, cy - 90)
 	options_btn.size = Vector2(80, 80)
 	options_btn.pressed.connect(show_options_menu)
 	canvas.add_child(options_btn)
@@ -235,32 +250,47 @@ func show_overlay(won: bool) -> void:
 	var overlay_canvas = CanvasLayer.new()
 	overlay_canvas.layer = 10
 	add_child(overlay_canvas)
-	
+
+	# Calculate center based on actual screen size
+	var viewport = Vector2(
+	ProjectSettings.get_setting("display/window/size/viewport_width"),
+	ProjectSettings.get_setting("display/window/size/viewport_height")
+)
+	var board_size = GRID_SIZE * TILE_SIZE + (GRID_SIZE - 1) * TILE_GAP
+	var cx = (viewport.x - board_size) / 2
+	var cy = (viewport.y - board_size) / 2
+
+	# Panel dimensions
+	var panel_w = 532
+	var panel_h = 500
+	var panel_x = cx + (board_size - panel_w) / 2
+	var panel_y = cy + (board_size - panel_h) / 2
+
 	var dim = ColorRect.new()
 	dim.color = Color(0, 0, 0, 0.5)
 	dim.set_anchors_preset(Control.PRESET_FULL_RECT)
 	overlay_canvas.add_child(dim)
-	
+
 	var border = ColorRect.new()
 	border.color = Color("#F4F9E9")
-	border.position = Vector2(90, 300)
-	border.size = Vector2(532, 500)
+	border.position = Vector2(panel_x - 6, panel_y - 6)
+	border.size = Vector2(panel_w + 12, panel_h + 12)
 	overlay_canvas.add_child(border)
-	
+
 	var panel = ColorRect.new()
 	panel.color = Color("#284B63")
-	panel.position = Vector2(96, 306)
-	panel.size = Vector2(520, 488)
+	panel.position = Vector2(panel_x, panel_y)
+	panel.size = Vector2(panel_w, panel_h)
 	overlay_canvas.add_child(panel)
-	
+
 	var icon = Label.new()
 	icon.text = "🎉" if won else "😢"
 	icon.add_theme_font_size_override("font_size", 80)
 	icon.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	icon.position = Vector2(100, 316)
-	icon.size = Vector2(520, 100)
+	icon.position = Vector2(panel_x, panel_y + 10)
+	icon.size = Vector2(panel_w, 100)
 	overlay_canvas.add_child(icon)
-	
+
 	var minutes = int(elapsed_time) / 60
 	var seconds = int(elapsed_time) % 60
 	var time_str = "%d:%02d" % [minutes, seconds]
@@ -269,30 +299,30 @@ func show_overlay(won: bool) -> void:
 		message = "Congratulations!\nYou reached 2048!\n\nScore: %d\nTime: %s" % [score, time_str]
 	else:
 		message = "Game Over!\n\nHighest Tile: %d\nScore: %d\nTime: %s" % [get_highest_tile(), score, time_str]
-		
+
 	var label = Label.new()
 	label.text = message
 	label.add_theme_font_size_override("font_size", 36)
 	label.add_theme_color_override("font_color", Color("#F4F9E9"))
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.position = Vector2(100, 420)
-	label.size = Vector2(520, 260)
+	label.position = Vector2(panel_x, panel_y + 110)
+	label.size = Vector2(panel_w, 280)
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	overlay_canvas.add_child(label)
-	
+
 	var play_btn = Button.new()
 	play_btn.text = "Play Again"
 	play_btn.add_theme_font_size_override("font_size", 28)
-	play_btn.position = Vector2(104, 720)
-	play_btn.size = Vector2(248, 60)
+	play_btn.position = Vector2(panel_x, panel_y + 420)
+	play_btn.size = Vector2(panel_w / 2 - 4, 60)
 	play_btn.pressed.connect(restart)
 	overlay_canvas.add_child(play_btn)
-	
+
 	var menu_btn = Button.new()
 	menu_btn.text = "Main Menu"
 	menu_btn.add_theme_font_size_override("font_size", 28)
-	menu_btn.position = Vector2(360, 720)
-	menu_btn.size = Vector2(248, 60)
+	menu_btn.position = Vector2(panel_x + panel_w / 2 + 4, panel_y + 420)
+	menu_btn.size = Vector2(panel_w / 2 - 4, 60)
 	menu_btn.pressed.connect(func():
 		get_tree().change_scene_to_file("res://main_menu.tscn")
 	)

@@ -13,10 +13,6 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.95686275, 0.9764706, 0.9137255, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_3g0y7"]
 font_size = 60
@@ -32,8 +28,7 @@ font_color = Color(0.95686275, 0.9764706, 0.9137255, 1)
 
 [node name="Control" type="Control" unique_id=778450636]
 layout_mode = 3
-anchor_left = 0.375
-anchor_top = 0.1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -56,33 +51,28 @@ script = ExtResource("5_t1iod")
 
 [node name="CenterContainer" type="Control" parent="." unique_id=1865971223]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = 234.0
-offset_right = -3.0
-offset_bottom = 234.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=52903854]
-clip_contents = true
-custom_minimum_size = Vector2(600, 700)
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=2144465628]
 layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3g0y7")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=551682490]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 15
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1528919637]
 layout_mode = 2
@@ -110,12 +100,8 @@ theme_override_font_sizes/font_size = 36
 text = "⚙"
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=837348473]
-custom_minimum_size = Vector2(510, 500)
+custom_minimum_size = Vector2(510, 510)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 4
 columns = 4
 
 [node name="ScoreRow" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=535356956]
