@@ -1,7 +1,7 @@
 extends Node
 class_name GameStateManager
-@onready var MovementManager = $MovementManager
-@onready var SpawnManager = $SpawnManager
+@onready var MovementManager = $Background2/MovementManager
+@onready var SpawnManager = $Background2/SpawnManager
 @onready var game_over_ui = $GameOverScreen
 
 
@@ -40,11 +40,11 @@ func _on_move_timer_timeout():
 			score+=1
 			$Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)
 			SpawnManager.spawn_food()
-		"wall", "self":
-			handle_game_over("wall or something")
-
-
-#Food/powerup positions
+		"wall":
+			handle_game_over("wall")
+		"self":
+			handle_game_over("self")
+		#powerup:
 
 #Game over state
 func handle_game_over(reason: String):

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://0dc8ys8q44mn"]
 
-[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://snake/assets/fonts/nirakolu/Nirakolu.ttf" id="1_r78x5"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="1_r78x5"]
 
 [node name="Hud" type="CanvasLayer" unique_id=502157937]
 

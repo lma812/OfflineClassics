@@ -1,7 +1,7 @@
 extends Node2D
 class_name MovementManager
 @onready var SpawnManager = $"../SpawnManager"
-@export var segment_scene: PackedScene # Link your snake_segment.tscn here
+@export var segment_scene: PackedScene 
 
 const GRID_WIDTH = 18
 const GRID_HEIGHT = 20
@@ -68,8 +68,6 @@ func check_collision(next_head_pos: Vector2i, snake_body: Array) -> String:
 	
 	return "none"
 
-
-
 #Move
 func move_snake(next_pos: Vector2i, has_eaten: bool):
 	print("Snake Head Coordinate: ", next_pos)
@@ -88,6 +86,5 @@ func move_snake(next_pos: Vector2i, has_eaten: bool):
 	# 3. Update Visuals
 	for i in range(body_coords.size()):
 		# Move the head and all body segments to their new pixel positions
-		# (Grid coordinate * 32px tile size)
 		if i < body_segments.size(): # Safety check
 			body_segments[i].position = body_coords[i] * CELL_SIZE

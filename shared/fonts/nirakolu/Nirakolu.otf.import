@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bfs2bttrgbn5c"
-path="res://.godot/imported/Nirakolu.ttf-d584507b9d6f49e0161315c745f8bbf0.fontdata"
+uid="uid://jncjukutvyor"
+path="res://.godot/imported/Nirakolu.otf-a317588b62d2acfb755498a81ef71e44.fontdata"
 
 [deps]
 
-source_file="res://snake/assets/fonts/nirakolu/Nirakolu.ttf"
-dest_files=["res://.godot/imported/Nirakolu.ttf-d584507b9d6f49e0161315c745f8bbf0.fontdata"]
+source_file="res://shared/fonts/nirakolu/Nirakolu.otf"
+dest_files=["res://.godot/imported/Nirakolu.otf-a317588b62d2acfb755498a81ef71e44.fontdata"]
 
 [params]
 
