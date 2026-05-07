@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://ot2gud5t0brn" path="res://2048/MoveManager.gd" id="3_jtqfd"]
 [ext_resource type="Script" uid="uid://cvidj1864ksqx" path="res://2048/InputManager.gd" id="4_hbtxd"]
 [ext_resource type="Script" uid="uid://lm204c5cur2l" path="res://2048/ScoreManager.gd" id="5_t1iod"]
-[ext_resource type="PackedScene" uid="uid://dr7jq3plmr4ad" path="res://2048/hud.tscn" id="6_rqu1e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3g0y7"]
 bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
@@ -14,10 +13,6 @@ border_width_top = 10
 border_width_right = 10
 border_width_bottom = 10
 border_color = Color(0.95686275, 0.9764706, 0.9137255, 1)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
 
 [sub_resource type="LabelSettings" id="LabelSettings_3g0y7"]
 font_size = 60
@@ -33,11 +28,9 @@ font_color = Color(0.95686275, 0.9764706, 0.9137255, 1)
 
 [node name="Control" type="Control" unique_id=778450636]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -58,49 +51,39 @@ script = ExtResource("5_t1iod")
 
 [node name="CenterContainer" type="Control" parent="." unique_id=1865971223]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-grow_horizontal = 2
-
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=52903854]
-clip_contents = true
-custom_minimum_size = Vector2(600, 700)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=2144465628]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_3g0y7")
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=551682490]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 15
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1528919637]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1528919637]
+layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TitleRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1547379623]
+[node name="TitleRow" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1547379623]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = -50
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/TitleRow" unique_id=1657145632]
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/TitleRow" unique_id=1657145632]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -109,38 +92,32 @@ label_settings = SubResource("LabelSettings_3g0y7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer/TitleRow" unique_id=698153305]
+[node name="OptionsButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/TitleRow" unique_id=698153305]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "⚙"
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=837348473]
-custom_minimum_size = Vector2(510, 500)
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=837348473]
+custom_minimum_size = Vector2(510, 510)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/h_separation = 4
-theme_override_constants/v_separation = 4
 columns = 4
 
-[node name="ScoreRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=535356956]
+[node name="ScoreRow" type="HBoxContainer" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=535356956]
 layout_mode = 2
 
-[node name="TimerLabel" type="Label" parent="CenterContainer/VBoxContainer/ScoreRow" unique_id=2068170305]
+[node name="TimerLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/ScoreRow" unique_id=2068170305]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "TIMER: 0:00"
 label_settings = SubResource("LabelSettings_jtqfd")
 
-[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/ScoreRow" unique_id=1870865986]
+[node name="ScoreLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer/ScoreRow" unique_id=1870865986]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_rqu1e")
 horizontal_alignment = 2
-
-[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("6_rqu1e")]

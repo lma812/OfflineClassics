@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameColors="*uid://pi2216hvhymn"
+SaveManager="*uid://cxnf3gyym8tgg"
 
 [display]
 
@@ -26,7 +27,11 @@ window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
-window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
+window/defaults/default_clear_color=Color(0, 0, 0, 1)
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [input]
 
@@ -67,4 +72,4 @@ move_down={
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.32915837, 0.3291584, 0.3291584, 1)
+environment/defaults/default_clear_color=Color(0.93333334, 0.9411765, 0.92156863, 1)

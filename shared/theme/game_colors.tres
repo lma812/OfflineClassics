@@ -1,0 +1,84 @@
+[gd_resource type="Theme" format=3 uid="uid://c2b87wdpxa08h"]
+
+[ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="1_a1sma"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlwgh"]
+bg_color = Color(0.7058824, 0.72156864, 0.67058825, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.13333334, 0.19607843, 0.2627451, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a1sma"]
+bg_color = Color(0.61121696, 0.628459, 0.5719765, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.13333334, 0.19607843, 0.2627451, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp7y0"]
+bg_color = Color(0.7058824, 0.72156864, 0.67058825, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.13333334, 0.19607843, 0.2627451, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wa4ha"]
+bg_color = Color(0.44333622, 0.45931804, 0.40645945, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.13333334, 0.19607843, 0.2627451, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
+
+[resource]
+default_font = ExtResource("1_a1sma")
+default_font_size = 25
+/colors/ASH_GREY = Color(0.7058824, 0.72156864, 0.67058825, 1)
+/colors/DEEP_SPACE_BLUE = Color(0.08235294, 0.19607843, 0.2627451, 1)
+/colors/IVORY = Color(0.95686275, 0.9764706, 0.9137255, 1)
+/colors/SOFT_LINEN = Color(0.93333334, 0.9411765, 0.92156863, 1)
+/colors/YALE_BLUE = Color(0.15686275, 0.29411766, 0.3882353, 1)
+Button/colors/font_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
+Button/colors/font_hover_color = Color(0.24967176, 0.43597472, 0.56446433, 1)
+Button/colors/font_hover_pressed_color = Color(0.2509804, 0.43529412, 0.5647059, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.2509804, 0.43529412, 0.5647059, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_rlwgh")
+Button/styles/hover = SubResource("StyleBoxFlat_a1sma")
+Button/styles/normal = SubResource("StyleBoxFlat_hp7y0")
+Button/styles/pressed = SubResource("StyleBoxFlat_wa4ha")
+Label/colors/font_color = Color(0.95686275, 0.9764706, 0.9137255, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
