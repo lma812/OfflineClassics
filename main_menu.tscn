@@ -5,6 +5,13 @@
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_fu7sn"]
 [ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="3_jix8l"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
+bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="MainMenu" type="Control" unique_id=1437744549]
 layout_mode = 3
 anchors_preset = 15
@@ -14,6 +21,55 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jix8l")
 script = ExtResource("1_06t4h")
+
+[node name="Panel" type="Panel" parent="." unique_id=617089416]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.263
+anchor_right = 0.5
+anchor_bottom = 0.263
+offset_left = -325.0
+offset_top = -141.64001
+offset_right = 325.0
+offset_bottom = 138.35999
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_jix8l")
+
+[node name="TitleLabel" type="Label" parent="Panel" unique_id=1582386441]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -303.5
+offset_top = 70.56
+offset_right = 309.5
+offset_bottom = 157.56
+grow_horizontal = 2
+theme = ExtResource("1_jix8l")
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 85
+text = "OFFLINE CLASSICS"
+
+[node name="Label" type="Label" parent="Panel" unique_id=643369758]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.33100003
+anchor_right = 0.5
+anchor_bottom = 0.33100003
+offset_left = -254.0
+offset_top = 123.81999
+offset_right = 252.0
+offset_bottom = 149.81999
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jix8l")
+theme_override_fonts/font = ExtResource("3_jix8l")
+theme_override_font_sizes/font_size = 25
+text = "YOUR FAVORITE GAMES COMPLETELY OFFLINE!"
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1074780281]
 layout_mode = 1
@@ -49,36 +105,3 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 35
 text = "2048"
-
-[node name="TitleLabel" type="Label" parent="." unique_id=1582386441]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -267.0
-offset_top = 265.56
-offset_right = 273.0
-offset_bottom = 342.56
-grow_horizontal = 2
-theme = ExtResource("1_jix8l")
-theme_override_fonts/font = ExtResource("2_fu7sn")
-theme_override_font_sizes/font_size = 85
-text = "OFFLINE CLASSICS"
-
-[node name="Label" type="Label" parent="." unique_id=643369758]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.33100003
-anchor_right = 0.5
-anchor_bottom = 0.33100003
-offset_left = -21.0
-offset_top = -10.680054
-offset_right = 19.0
-offset_bottom = 12.319946
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_jix8l")
-theme_override_fonts/font = ExtResource("3_jix8l")
-theme_override_font_sizes/font_size = 25
-text = "YOUR FAVORITE GAMES COMPLETELY OFFLINE!"
