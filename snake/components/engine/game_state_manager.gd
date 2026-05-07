@@ -4,8 +4,6 @@ class_name GameStateManager
 @onready var SpawnManager = $Background2/SpawnManager
 @onready var game_over_ui = $GameOverScreen
 
-
-
 var game_active: bool = true
 var score: int
 
@@ -53,16 +51,28 @@ func handle_game_over(reason: String):
 	game_active = false
 	print("Game Over! Reason: ", reason)
 	
-	# 1. Stop the movement
 	$MoveTimer.stop()
 	print("timer stopped")
 	
-	# 2. Show the UI 
-	show_game_over_screen(reason)
+	#update scores
+	var snake = SaveManager.get_game("snake")
+	var new_high_score = max(score, snake["high_score"])
 	
-func show_game_over_screen(reason: String):
+	SaveManager.update_game("snake", {
+		"high_score": new_high_score,
+		"games_played": snake["games_played"] + 1
+	})
+	
+	SaveManager._save()
+	print("saved: ", SaveManager.get_game("snake"))
+	
+	show_game_over_screen(reason, str(new_high_score))
+	
+func show_game_over_screen(reason: String, new_high_score: String):
 	game_over_ui.show()
 	# Update the label to say why they died
+	print("highscore:", new_high_score)
+	game_over_ui.get_node("VBoxContainer/Highscore").text = "HIGHSCORE: %s" % new_high_score
 	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
 	game_over_ui.get_node("VBoxContainer/Reason").text = "Hit " + reason
 
