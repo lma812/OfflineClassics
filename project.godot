@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameColors="*uid://pi2216hvhymn"
+SaveManager="*uid://cxnf3gyym8tgg"
 
 [display]
 
@@ -27,6 +28,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
+
+[editor]
+
+version_control/autoload_on_startup=true
 
 [input]
 
