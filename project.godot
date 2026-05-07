@@ -27,7 +27,7 @@ window/size/viewport_height=1280
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
-window/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
+window/defaults/default_clear_color=Color(0, 0, 0, 1)
 
 [editor]
 
@@ -72,4 +72,4 @@ move_down={
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.32915837, 0.3291584, 0.3291584, 1)
+environment/defaults/default_clear_color=Color(0.7058824, 0.72156864, 0.67058825, 1)
