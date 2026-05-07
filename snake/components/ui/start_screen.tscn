@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c5rw2x6b5k5ye"]
 
+[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_4gf48"]
 [ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/components/ui/start_screen.gd" id="1_rx5u5"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_ahccb"]
 [ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_4gf48"]
@@ -19,53 +20,12 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iujm3"]
-bg_color = Color(0.54509807, 0.5372549, 0.6, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-shadow_size = 1
-shadow_offset = Vector2(0, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtpab"]
-bg_color = Color(0.41184112, 0.4043988, 0.46252674, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-shadow_size = 1
-shadow_offset = Vector2(0, 3)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwqi7"]
-bg_color = Color(0.51284903, 0.5049625, 0.567617, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-shadow_size = 1
-shadow_offset = Vector2(0, 3)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gf48"]
+bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="GDScript" id="GDScript_vtpab"]
 script/source = "extends Button
@@ -97,6 +57,7 @@ offset_right = 360.0
 offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_4gf48")
 script = ExtResource("1_rx5u5")
 
 [node name="Hud" parent="." unique_id=502157937 instance=ExtResource("4_ahccb")]
@@ -115,7 +76,7 @@ script = SubResource("GDScript_iujm3")
 [node name="Panel" type="Panel" parent="Body" unique_id=464182794]
 layout_mode = 2
 size_flags_horizontal = 3
-metadata/_edit_lock_ = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gf48")
 
 [node name="Title" type="Label" parent="Body/Panel" unique_id=339118684]
 layout_mode = 1
@@ -129,9 +90,6 @@ offset_top = -102.880005
 offset_right = 290.0
 offset_bottom = 102.119995
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.3529412, 0.36078432, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.4762209, 0, 0.7921569)
-theme_override_fonts/font = ExtResource("2_ahccb")
 theme_override_font_sizes/font_size = 200
 text = "SNAKE"
 horizontal_alignment = 1
@@ -159,13 +117,7 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_ahccb")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rwqi7")
 text = "Start Game"
 script = SubResource("GDScript_vtpab")
 metadata/_edit_lock_ = true
@@ -173,13 +125,8 @@ metadata/_edit_lock_ = true
 [node name="BacktoMenu" type="Button" parent="Menu" unique_id=870389785]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.75686276, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_ahccb")
 theme_override_font_sizes/font_size = 50
-theme_override_styles/normal = SubResource("StyleBoxFlat_iujm3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_vtpab")
-theme_override_styles/hover = SubResource("StyleBoxFlat_rwqi7")
 text = "Back to Menu"
 script = SubResource("GDScript_vtpab")
 metadata/_edit_lock_ = true
