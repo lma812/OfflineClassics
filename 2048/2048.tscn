@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dc6kx555ta8l3"]
 
 [ext_resource type="Script" uid="uid://cpqwhxly4m7q1" path="res://2048/GameStateManager.gd" id="1_3g0y7"]
+[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_jtqfd"]
 [ext_resource type="Script" uid="uid://xwssj383u38g" path="res://2048/GridManager.gd" id="2_rqu1e"]
 [ext_resource type="Script" uid="uid://ot2gud5t0brn" path="res://2048/MoveManager.gd" id="3_jtqfd"]
 [ext_resource type="Script" uid="uid://cvidj1864ksqx" path="res://2048/InputManager.gd" id="4_hbtxd"]
@@ -40,6 +41,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_jtqfd")
 
 [node name="GameStateManager" type="Node" parent="." unique_id=1586015311]
 script = ExtResource("1_3g0y7")

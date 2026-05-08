@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://udyht2080hyc"]
 
+[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_lijtn"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="1_m4ul8"]
 
 [node name="Hud" type="CanvasLayer" unique_id=502157937]
@@ -10,6 +11,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 100.0
 grow_horizontal = 2
+theme = ExtResource("1_lijtn")
 
 [node name="Title" type="Label" parent="Panel" unique_id=1601378875]
 layout_mode = 1
@@ -24,8 +26,6 @@ offset_right = 180.0
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 0.14901961, 0.078431375, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.72156864, 0, 1)
 theme_override_fonts/font = ExtResource("1_m4ul8")
 theme_override_font_sizes/font_size = 50
 text = "OFFLINE CLASSICS"

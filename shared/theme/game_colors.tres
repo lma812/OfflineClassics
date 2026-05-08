@@ -64,10 +64,10 @@ shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1xhl"]
 bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 corner_detail = 20
 shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
 shadow_size = 5
@@ -91,5 +91,5 @@ Button/styles/normal = SubResource("StyleBoxFlat_hp7y0")
 Button/styles/pressed = SubResource("StyleBoxFlat_wa4ha")
 Label/colors/font_color = Color(0.95686275, 0.9764706, 0.9137255, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
+Label/colors/font_shadow_color = Color(0.9843137, 0.7058824, 0.16862746, 1)
 Panel/styles/panel = SubResource("StyleBoxFlat_x1xhl")

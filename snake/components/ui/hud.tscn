@@ -6,25 +6,30 @@
 [node name="Hud" type="CanvasLayer" unique_id=502157937]
 
 [node name="Panel" type="Panel" parent="." unique_id=2049125945]
-custom_minimum_size = Vector2(0, 245)
 anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 220.0
 grow_horizontal = 2
 theme = ExtResource("1_6sfvg")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=1222724399]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = 136.0
-offset_right = 98.0
-offset_bottom = 188.0
+anchors_preset = -1
+anchor_left = 0.50100005
+anchor_top = 0.127
+anchor_right = 0.50100005
+anchor_bottom = 0.127
+offset_left = -96.72003
+offset_top = -26.559998
+offset_right = 97.27997
+offset_bottom = 25.440002
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+size_flags_vertical = 1
+theme = ExtResource("1_6sfvg")
+theme_override_colors/font_shadow_color = Color(0, 0.81960785, 0.9019608, 1)
 theme_override_fonts/font = ExtResource("1_r78x5")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 30
 text = "SCORE: 0"
+horizontal_alignment = 1
 
 [node name="Title" type="Label" parent="." unique_id=1601378875]
 anchors_preset = 5
@@ -35,7 +40,6 @@ offset_top = 40.0
 offset_right = 98.0
 offset_bottom = 92.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 0.14901961, 0.078431375, 1)
 theme_override_colors/font_shadow_color = Color(0, 0.72156864, 0, 1)
 theme_override_fonts/font = ExtResource("1_r78x5")
 theme_override_font_sizes/font_size = 75
