@@ -34,7 +34,7 @@ func get_unique(dices: Array) -> Array:
 	var unique = []
 	for dice in dices:
 		if not dice in unique:
-			unique.appaend(dice)
+			unique.append(dice)
 	return unique
 	
 func reset():
@@ -105,8 +105,8 @@ func get_poten_score(category: String, dices: Array) -> int:
 		"three_of_kind": return calc_three_kind(dices)
 		"four_of_kind": return calc_four_kind(dices)
 		"full_house": return calc_full_house(dices)
-		"small-straight": return calc_small_straight(dices)
-		"large-straight": return calc_large_straight(dices)
+		"small_straight": return calc_small_straight(dices)
+		"large_straight": return calc_large_straight(dices)
 		"yahtzee": return calc_yahtzee(dices)
 	return 0
 		

@@ -55,7 +55,9 @@ func _save() -> void:
 	if file == null:
 		push_error("SaveManager: could not open temp file. Error: %s" % FileAccess.get_open_error())
 		emit_signal("save_failed")
+		return
 	file.store_string(JSON.stringify(_data, "\t"))
+	file.close()
 	
 	#Verify Save
 	var verify = FileAccess.open(TEMP_PATH, FileAccess.READ)
@@ -77,4 +79,13 @@ func _save() -> void:
 		ProjectSettings.globalize_path(TEMP_PATH),
 		ProjectSettings.globalize_path(SAVE_PATH)
 	)
+	
+func record_yahtzee_result(player_won: bool) -> void:
+	var data = get_game("yahtzee")
+	update_game("yahtzee", {
+		 # high_score = wins
+		"high_score": data["high_score"] + (1 if player_won else 0),
+		"games_played": data["games_played"] + 1
+	})
+	_save()
 	

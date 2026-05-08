@@ -8,10 +8,14 @@ func _ready():
 	#start screen
 	$StartScreen.visible = true
 	$GameScreen.visible = false
+	$GameScreen/GameOverScreen.visible = false
 	
 	$StartScreen/Container/VBoxContainer/BackButton.pressed.connect(on_back_button_pressed)
 	$GameScreen/VBoxContainer/TopBar/BackButton.pressed.connect(game_back_button_pressed)
 	$GameScreen/VBoxContainer/TopBar/RestartButton.pressed.connect(restart_button_pressed)
+	$GameScreen/GameOverScreen/Container/Restart.pressed.connect(restart_button_pressed)
+	$GameScreen/GameOverScreen/Container/BacktoMenu.pressed.connect(on_back_button_pressed)
+	
 	#difficulty section of home screen
 	$StartScreen/Container/VBoxContainer/DifficultyValueLabel.text= "Medium"
 	$StartScreen/Container/VBoxContainer/DifficultyValueLabel.modulate = GameColors.YELLOW
@@ -62,9 +66,9 @@ func connect_score_cells():
 		"LargeStraightPlayer": "large_straight",
 		"YahtzeePlayer": "yahtzee"
 	}
-	for name in cells:
-		var category = cells[name]
-		var button = $GameScreen/VBoxContainer/ScoreGrid.get_node(name)
+	for names in cells:
+		var category = cells[names]
+		var button = $GameScreen/VBoxContainer/ScoreGrid.get_node(names)
 		button.pressed.connect( func(): on_score_cell_pressed(category))
 
 # player actions
@@ -265,10 +269,19 @@ func on_play_pressed():
 func show_game_over():
 	var player_total = $GameScreen/ScoreManager.get_player_total()
 	var bot_total = $GameScreen/ScoreManager.get_bot_total()
-	print("Game Over! Player: ", player_total, " Bot: ", bot_total)
+	$GameScreen/GameOverScreen.visible = true
+	if player_total > bot_total:
+		$GameScreen/GameOverScreen/Container/GameOver.text = "YOU WIN!"
+	else:
+		$GameScreen/GameOverScreen/Container/GameOver.text = "YOU LOSE!"
+	$GameScreen/GameOverScreen/Container/Reason.text = "YOU: " + str(player_total) + " VS BOT: " + str(bot_total)
+	SaveManager.record_yahtzee_result(player_total > bot_total)
+	var wins = SaveManager.get_game("yahtzee")["high_score"]
+	$GameScreen/GameOverScreen/Container/Highscore.text = "WINS: " + str(wins)
 	
 func restart_button_pressed():
 	#reset game
+	$GameScreen/GameOverScreen.visible = false
 	$GameScreen/DiceManager.reset_turn()
 	$GameScreen/ScoreManager.reset()
 	is_player_turn = true
