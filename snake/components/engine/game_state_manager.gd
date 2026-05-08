@@ -2,7 +2,7 @@ extends Node
 class_name GameStateManager
 @onready var MovementManager = $Background2/MovementManager
 @onready var SpawnManager = $Background2/SpawnManager
-@onready var game_over_ui = $GameOverScreen
+@onready var game_over_ui = $Background2/GameOverScreen
 
 var game_active: bool = true
 var score: int

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b1t8k7wsaeohy"]
 
+[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_4n80s"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_0bs24"]
 [ext_resource type="Script" uid="uid://d2y8igf4xcu5y" path="res://snake/components/engine/movement_manager.gd" id="2_hhjwv"]
 [ext_resource type="PackedScene" uid="uid://boj2y2q616t7o" path="res://snake/components/snake_segment.tscn" id="3_0bs24"]
@@ -15,68 +16,34 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="SnakeGame" type="Node" unique_id=78538605]
+[node name="SnakeGame" type="Control" unique_id=1774263195]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 320.0
+offset_right = -69.0
+offset_bottom = -460.0
+theme = ExtResource("1_4n80s")
 script = ExtResource("4_4n80s")
 
 [node name="MoveTimer" type="Timer" parent="." unique_id=1323109070]
 wait_time = 0.09
 autostart = true
 
-[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=1781855235]
-visible = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen" unique_id=1975557003]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.0
-offset_top = -101.5
-offset_right = 57.0
-offset_bottom = 101.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameOver" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=480345361]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.05882353, 0.14509805, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.83137256, 0, 1)
-theme_override_fonts/font = ExtResource("2_0bs24")
-theme_override_font_sizes/font_size = 100
-horizontal_alignment = 1
-
-[node name="Reason" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=955618770]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0bs24")
-theme_override_font_sizes/font_size = 25
-horizontal_alignment = 1
-
-[node name="Highscore" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=767714486]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_0bs24")
-theme_override_font_sizes/font_size = 25
-horizontal_alignment = 1
-
-[node name="Restart" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=852199278]
-layout_mode = 2
-text = "Restart"
-
-[node name="BacktoMenu" type="Button" parent="GameOverScreen/VBoxContainer" unique_id=615893119]
-layout_mode = 2
-text = "Back to Menu"
-
 [node name="Hud" parent="." unique_id=502157937 instance=ExtResource("6_dv2sq")]
 
 [node name="Background2" type="Panel" parent="." unique_id=849183616]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.25
+anchor_top = 0.656
 anchor_right = 0.5
-anchor_bottom = 0.25
+anchor_bottom = 0.656
 offset_left = -288.0
+offset_top = -319.84003
 offset_right = 288.0
-offset_bottom = 640.0
+offset_bottom = 320.15997
 size_flags_horizontal = 8
 
 [node name="MovementManager" type="Node2D" parent="Background2" unique_id=29740412]
@@ -95,6 +62,76 @@ offset_right = 127.99988
 offset_bottom = 100.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhjwv")
 
+[node name="GameOverScreen" type="CanvasLayer" parent="Background2" unique_id=1781855235]
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background2/GameOverScreen" unique_id=1975557003]
+anchors_preset = -1
+anchor_left = 0.124000005
+anchor_top = 0.26500002
+anchor_right = 0.89000005
+anchor_bottom = 0.75100005
+offset_left = 213.72
+offset_top = 60.799988
+offset_right = -223.80005
+offset_bottom = -285.28003
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4n80s")
+
+[node name="GameOver" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=480345361]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.05882353, 0.14509805, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.83137256, 0, 1)
+theme_override_fonts/font = ExtResource("2_0bs24")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+
+[node name="Blank" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=123499086]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.05882353, 0.14509805, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.83137256, 0, 1)
+theme_override_fonts/font = ExtResource("2_0bs24")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+
+[node name="Reason" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=955618770]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_0bs24")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=767714486]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_0bs24")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Background2/GameOverScreen" unique_id=576705184]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.61200005
+anchor_right = 0.5
+anchor_bottom = 0.61200005
+offset_left = -101.0
+offset_top = -40.360046
+offset_right = 97.5
+offset_bottom = 58.639954
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4n80s")
+
+[node name="Restart" type="Button" parent="Background2/GameOverScreen/Buttons" unique_id=852199278]
+layout_mode = 2
+text = "Restart"
+
+[node name="BacktoMenu" type="Button" parent="Background2/GameOverScreen/Buttons" unique_id=615893119]
+layout_mode = 2
+text = "Back to Menu"
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/Restart" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="GameOverScreen/VBoxContainer/BacktoMenu" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Background2/GameOverScreen/Buttons/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Background2/GameOverScreen/Buttons/BacktoMenu" to="." method="_on_back_button_pressed"]

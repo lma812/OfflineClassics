@@ -20,13 +20,6 @@ func _process(delta: float) -> void:
 	pass
 "
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gf48"]
-bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
 [sub_resource type="GDScript" id="GDScript_vtpab"]
 script/source = "extends Button
 
@@ -76,7 +69,6 @@ script = SubResource("GDScript_iujm3")
 [node name="Panel" type="Panel" parent="Body" unique_id=464182794]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_4gf48")
 
 [node name="Title" type="Label" parent="Body/Panel" unique_id=339118684]
 layout_mode = 1
