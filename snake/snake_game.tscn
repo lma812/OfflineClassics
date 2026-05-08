@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://wn6llgb7hv2w" path="res://snake/components/engine/game_state_manager.gd" id="4_4n80s"]
 [ext_resource type="Script" uid="uid://3prxp4etesp0" path="res://snake/components/engine/spawn_manager.gd" id="6_0bs24"]
 [ext_resource type="PackedScene" uid="uid://0dc8ys8q44mn" path="res://snake/components/ui/hud.tscn" id="6_dv2sq"]
+[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="8_dv2sq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hhjwv"]
 bg_color = Color(0.28276575, 0.7109409, 0, 1)
@@ -15,6 +16,9 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e27v7"]
+texture = ExtResource("8_dv2sq")
 
 [node name="SnakeGame" type="Control" unique_id=1774263195]
 layout_mode = 3
@@ -81,6 +85,7 @@ offset_bottom = -285.28003
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4n80s")
+metadata/_edit_lock_ = true
 
 [node name="GameOver" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=480345361]
 layout_mode = 2
@@ -91,18 +96,10 @@ theme_override_fonts/font = ExtResource("2_0bs24")
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
 
-[node name="Blank" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=123499086]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 0.05882353, 0.14509805, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.83137256, 0, 1)
-theme_override_fonts/font = ExtResource("2_0bs24")
-theme_override_font_sizes/font_size = 100
-horizontal_alignment = 1
-
 [node name="Reason" type="Label" parent="Background2/GameOverScreen/VBoxContainer" unique_id=955618770]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0.30694947, 0.99999994, 0.88074607, 1)
 theme_override_fonts/font = ExtResource("2_0bs24")
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
@@ -112,6 +109,20 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_0bs24")
 theme_override_font_sizes/font_size = 25
 horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="Background2/GameOverScreen" unique_id=209607064]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 65.96002
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_e27v7")
 
 [node name="Buttons" type="VBoxContainer" parent="Background2/GameOverScreen" unique_id=576705184]
 anchors_preset = -1

@@ -39,9 +39,9 @@ func _on_move_timer_timeout():
 			$Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)
 			SpawnManager.spawn_food()
 		"wall":
-			handle_game_over("wall")
+			handle_game_over("WALL")
 		"self":
-			handle_game_over("self")
+			handle_game_over("SELF")
 		#powerup:
 
 #Game over state
@@ -56,7 +56,7 @@ func handle_game_over(reason: String):
 	
 	#update scores
 	var snake = SaveManager.get_game("snake")
-	var new_high_score = max(score, snake["high_score"])
+	var new_high_score = int(max(score, snake["high_score"]))
 	
 	SaveManager.update_game("snake", {
 		"high_score": new_high_score,
@@ -74,7 +74,7 @@ func show_game_over_screen(reason: String, new_high_score: String):
 	print("highscore:", new_high_score)
 	game_over_ui.get_node("VBoxContainer/Highscore").text = "HIGHSCORE: %s" % new_high_score
 	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
-	game_over_ui.get_node("VBoxContainer/Reason").text = "Hit " + reason
+	game_over_ui.get_node("VBoxContainer/Reason").text = "HIT " + reason
 
 # Connect the Button's "pressed" signal to this function
 func _on_restart_button_pressed():
