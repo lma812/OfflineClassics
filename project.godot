@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameColors="*uid://pi2216hvhymn"
-SaveManager="*uid://cxnf3gyym8tgg"
 
 [display]
 
