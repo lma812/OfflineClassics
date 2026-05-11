@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ch3hwvnah5w2v" path="res://word_bomb/scripts/GameManager.gd" id="1_c00l8"]
 [ext_resource type="Script" uid="uid://cs65ylu3lcbik" path="res://word_bomb/scripts/KeyboardManager.gd" id="2_u0ppc"]
-[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="3_u0ppc"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="3_u0ppc"]
 [ext_resource type="PackedScene" uid="uid://bc736p8pupghi" path="res://shared/theme/hud.tscn" id="4_btytf"]
-[ext_resource type="PackedScene" uid="uid://udyht2080hyc" path="res://yahtzee/components/hud.tscn" id="4_bwlmx"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="5_lt8pi"]
 [ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="6_bwlmx"]
 
@@ -95,8 +94,6 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 45
 text = "↻"
 
-[node name="Hud" parent="CenterContainer/Panel/TopBar/RestartButton" unique_id=502157937 instance=ExtResource("4_bwlmx")]
-
 [node name="Constraint" type="Label" parent="CenterContainer/Panel" unique_id=142396560]
 layout_mode = 0
 offset_left = 28.0
@@ -110,9 +107,9 @@ horizontal_alignment = 1
 [node name="Timer" type="Label" parent="CenterContainer/Panel" unique_id=1419395628]
 layout_mode = 0
 offset_left = 188.0
-offset_top = 96.0
+offset_top = 112.0
 offset_right = 392.0
-offset_bottom = 133.5
+offset_bottom = 149.5
 size_flags_horizontal = 3
 text = "0"
 label_settings = SubResource("LabelSettings_btytf")
@@ -233,5 +230,6 @@ text = "Restart"
 layout_mode = 2
 text = "Back to Menu"
 
+[connection signal="pressed" from="CenterContainer/Panel/TopBar/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/Buttons/Restart" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/Buttons/BacktoMenu" to="." method="_on_back_button_pressed"]
