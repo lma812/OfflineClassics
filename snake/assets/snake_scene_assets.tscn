@@ -1,14 +1,10 @@
-[gd_scene format=4 uid="uid://cn5u6pern7j6f"]
+[gd_scene format=4 uid="uid://1472jwn84gop"]
 
-[ext_resource type="Texture2D" uid="uid://g7bn7uqoyabr" path="res://snake/assets/craftpix-net-846754-free-green-zone-tileset-pixel-art/1 Tiles/Tile_04.png" id="1_gptop"]
 [ext_resource type="Script" uid="uid://wn6llgb7hv2w" path="res://snake/components/engine/game_state_manager.gd" id="2_k3xe0"]
 [ext_resource type="Script" uid="uid://d2y8igf4xcu5y" path="res://snake/components/engine/movement_manager.gd" id="3_8irvb"]
 [ext_resource type="PackedScene" uid="uid://boj2y2q616t7o" path="res://snake/components/snake_segment.tscn" id="4_mj71e"]
-[ext_resource type="Script" uid="uid://qyahu6d431h8" path="res://snake/components/engine/collision_manager.gd" id="5_4xk6k"]
-[ext_resource type="Texture2D" uid="uid://ch7o5m46e8nsb" path="res://snake/assets/craftpix-net-846754-free-green-zone-tileset-pixel-art/Tileset.png" id="6_k3xe0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8irvb"]
-texture = ExtResource("6_k3xe0")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -112,7 +108,6 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_8irvb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xk6k"]
-texture = ExtResource("6_k3xe0")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -220,7 +215,6 @@ sources/0 = SubResource("TileSetAtlasSource_4xk6k")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=392918793]
 position = Vector2(360, 624)
 scale = Vector2(20.9375, 22.937502)
-texture = ExtResource("1_gptop")
 
 [node name="GameStateManager" type="Node2D" parent="Sprite2D" unique_id=241245118]
 unique_name_in_owner = true
@@ -239,7 +233,6 @@ segment_scene = ExtResource("4_mj71e")
 unique_name_in_owner = true
 position = Vector2(-16, -15.999999)
 scale = Vector2(0.047761194, 0.043596726)
-script = ExtResource("5_4xk6k")
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=1695298265]
 visible = false
@@ -259,5 +252,4 @@ metadata/_edit_lock_ = true
 visible = false
 position = Vector2(25.000002, 257)
 scale = Vector2(20.9375, 22.937502)
-texture = ExtResource("1_gptop")
 centered = false
