@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bkfssjiou06oc"]
+
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_jhn43"]
+
+[node name="Hud" type="CanvasLayer" unique_id=502157937]
+
+[node name="Panel" type="Panel" parent="." unique_id=2049125945]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme = ExtResource("1_jhn43")
+
+[node name="Title" type="Label" parent="." unique_id=1601378875]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 40.0
+offset_right = 98.0
+offset_bottom = 92.0
+grow_horizontal = 2
+theme = ExtResource("1_jhn43")
+theme_override_font_sizes/font_size = 75
+text = "OFFLINE CLASSICS"

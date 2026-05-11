@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://d4lbbwtu7r222"]
+
+[ext_resource type="Script" uid="uid://bn2r3rl77tfus" path="res://wordle/Scripts/WordleLose.gd" id="1_f43y2"]
+[ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="2_p5p1o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vofc6"]
+bg_color = Color(0.101960786, 0.22745098, 0.36078432, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="WordleLose" type="Control" unique_id=1643978759]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f43y2")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1784038064]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1453822723]
+custom_minimum_size = Vector2(340, 420)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vofc6")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1450794160]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=74223808]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=231286937]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p5p1o")
+theme_override_font_sizes/font_size = 36
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="AnswerLabel" type="Label" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=960044599]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=827219799]
+custom_minimum_size = Vector2(260, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p5p1o")
+theme_override_font_sizes/font_size = 22
+text = "RESTART"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/Panel/MarginContainer/VBoxContainer" unique_id=1667880891]
+custom_minimum_size = Vector2(260, 60)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p5p1o")
+theme_override_font_sizes/font_size = 22
+text = "MAIN MENU"

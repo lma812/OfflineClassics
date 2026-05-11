@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://c5rw2x6b5k5ye"]
+[gd_scene format=3 uid="uid://ivvfoth8f8ow"]
 
-[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_4gf48"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_4gf48"]
 [ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/components/ui/start_screen.gd" id="1_rx5u5"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_ahccb"]
 [ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_4gf48"]

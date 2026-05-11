@@ -1,46 +1,136 @@
-[gd_scene format=3 uid="uid://1wb22qcnds08"]
+[gd_scene format=3 uid="uid://cr8t87ik01836"]
 
 [ext_resource type="Script" uid="uid://c8ajt4frpk7nm" path="res://wordle/Scripts/MainMenu.gd" id="1_eam2a"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_it2i2"]
+[ext_resource type="PackedScene" uid="uid://0dc8ys8q44mn" path="res://snake/components/ui/hud.tscn" id="3_qb71e"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="4_gw3v6"]
+[ext_resource type="Texture2D" uid="uid://r2tpcabax7lh" path="res://wordle/Assets/Wordle.png" id="5_bt4vf"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_eam2a"]
-font_size = 64
+[sub_resource type="GDScript" id="GDScript_iujm3"]
+script/source = "extends Container
 
-[node name="MainMenu" type="Control" unique_id=1525236431]
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_vtpab"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Wordle" type="Control" unique_id=1993310050]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -640.0
+offset_right = 360.0
+offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_it2i2")
 script = ExtResource("1_eam2a")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1346687698]
+[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("3_qb71e")]
+
+[node name="Body" type="BoxContainer" parent="." unique_id=1749149686]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.87500006
+offset_top = 320.0
+offset_bottom = -0.00012207031
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_iujm3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1127104526]
+[node name="Panel" type="Panel" parent="Body" unique_id=464182794]
 layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
+size_flags_horizontal = 3
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1291011409]
-layout_mode = 2
-text = "WORDLE"
-label_settings = SubResource("LabelSettings_eam2a")
+[node name="Title" type="Label" parent="Body/Panel" unique_id=339118684]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.19700001
+anchor_right = 0.5
+anchor_bottom = 0.19700001
+offset_left = -286.0
+offset_top = -102.880005
+offset_right = 290.0
+offset_bottom = 102.119995
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Wordle"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1170618511]
-custom_minimum_size = Vector2(260, 70)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "PLAY"
+[node name="Menu" type="VBoxContainer" parent="." unique_id=1305371886]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.74100006
+anchor_right = 0.5
+anchor_bottom = 0.74100006
+offset_left = -163.00635
+offset_top = -116.4801
+offset_right = 154.4674
+offset_bottom = 115.5199
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1081807174]
-custom_minimum_size = Vector2(260, 70)
+[node name="StartGame" type="Button" parent="Menu" unique_id=1846626844]
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "QUIT"
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 40
+text = "START GAME"
+script = SubResource("GDScript_vtpab")
+metadata/_edit_lock_ = true
+
+[node name="BacktoMenu" type="Button" parent="Menu" unique_id=870389785]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_gw3v6")
+theme_override_font_sizes/font_size = 40
+text = "BACK TO MENU"
+script = SubResource("GDScript_vtpab")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1864988157]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.533
+anchor_right = 0.5
+anchor_bottom = 0.533
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bt4vf")
