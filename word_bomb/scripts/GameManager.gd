@@ -2,24 +2,168 @@ extends Node
 
 @onready var KeyboardManager = $KeyboardManager
 @onready var input_label = $CenterContainer/VBoxContainer/Guess
+@onready var score_label = $CenterContainer/Panel/TopBar/ScoreLabel
+@onready var constraint_label = $CenterContainer/Panel/Constraint
+@onready var timer = $CenterContainer/Panel/Timer
+@onready var game_over_ui = $GameOverScreen
 
+var word_set := {}
 var current_input := ""
+var current_constraint := ""
+var used_words := {}
+var lives = 3 
+var score = 0
+var seconds = 15
+var timer_id = 0
 
 func _ready() -> void:
+	lives = 3
+	score = 0 
+	seconds = 15
+	load_words()
 	KeyboardManager.create_keyboard()
 	KeyboardManager.letter_pressed.connect(_on_letter)
 	KeyboardManager.backspace_pressed.connect(_on_backspace)
 	KeyboardManager.enter_pressed.connect(_on_enter)
+	current_constraint = generate_constraint()
+	constraint_label.text = current_constraint
+	count_down(seconds)
+	
+func load_words():
+	var file = FileAccess.open("res://word_bomb/assets/dict.txt", FileAccess.READ)
+	for line in file.get_as_text().split("\n"):
+		word_set[line.strip_edges()] = true
+	
+func update_ui():
+	input_label.text = current_input
+	print(input_label.text)
 	
 func _on_backspace() -> void:
 	if current_input.length() > 0:
 		current_input = current_input.substr(0, current_input.length() - 1)
-		input_label.text = current_input
+		update_ui()
 
 func _on_letter(key:String) -> void:
-	if current_input.length() < 30:
-		current_input += key
-		input_label.text = current_input
+	if current_input.length() < 34:
+		current_input += key.to_upper()
+		update_ui()
 
 func _on_enter() -> void:
-	emit_signal("enter_pressed", current_input)
+	var word = current_input.to_lower()
+
+	if validate(word):
+		handle_correct(word)
+	else:
+		handle_wrong(word)
+
+	current_input = ""
+	update_ui()
+	
+func validate(word:String) -> bool:
+	# must have the str literal in the word
+	# must be a valid word. 
+	word = word.to_upper()
+
+	if not word_set.has(word):
+		return false
+
+	if not word.contains(current_constraint):
+		return false
+
+	if used_words.has(word):
+		return false
+
+	return true
+
+func handle_correct(word: String):
+	used_words[word] = true
+
+	score += word.length()  # or your scoring system
+	score_label.text = "SCORE: %s" % str(score)
+	
+	current_constraint = generate_constraint()
+	constraint_label.text = current_constraint
+	count_down(seconds)
+	
+func handle_wrong(word: String):
+	lives -= 1
+	shake_ui()
+
+func generate_constraint() -> String:
+	var words = word_set.keys()
+	var random_number = randi_range(1,3)
+	var random_word = words[randi() % words.size()]
+	
+	return random_word.substr(0, random_number) 
+
+var shake_strength := 8.0
+var shake_time := 0.2
+var original_pos := Vector2.ZERO
+
+func shake_ui():
+	if not original_pos:
+		original_pos = $CenterContainer.position
+
+	_start_shake()
+
+func _start_shake():
+	var elapsed := 0.0
+
+	while elapsed < shake_time:
+		var offset = Vector2(
+			randf_range(-shake_strength, shake_strength),
+			randf_range(-shake_strength, shake_strength)
+		)
+
+		$CenterContainer.position = original_pos + offset
+
+		await get_tree().process_frame
+		elapsed += get_process_delta_time()
+
+	$CenterContainer.position = original_pos
+	
+func count_down(seconds: int) -> void:
+	timer_id += 1
+	var current_id = timer_id
+
+	for i in range(seconds, -1, -1):
+		# cancel old countdowns
+		if current_id != timer_id:
+			return
+
+		timer.text = str(i)
+		await get_tree().create_timer(1.0).timeout
+	
+	handle_game_over()
+
+func handle_game_over() -> void: 
+	var word_bomb = SaveManager.get_game("word_bomb")
+	var new_high_score = int(max(score, word_bomb["high_score"]))
+	var reason = current_constraint
+	
+	SaveManager.update_game("word_bomb", {
+		"high_score": new_high_score,
+		"games_played": word_bomb["games_played"] + 1
+	})
+	
+	SaveManager._save()
+	print("saved: ", SaveManager.get_game("word_bomb"))
+	
+	show_game_over_screen(reason, str(new_high_score))
+	
+func show_game_over_screen(reason: String, new_high_score: String):
+	game_over_ui.show()
+	# Update the label to say why they died
+	print("highscore:", new_high_score)
+	game_over_ui.get_node("VBoxContainer/Highscore").text = "HIGHSCORE: %s" % new_high_score
+	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
+	game_over_ui.get_node("VBoxContainer/Reason").text = "work on this!!: " + reason
+
+func _on_restart_button_pressed():
+	# Reloads the current scene to start fresh
+	print("scene reload")
+	get_tree().reload_current_scene()
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://main_menu.tscn")
+	

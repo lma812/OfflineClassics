@@ -123,7 +123,7 @@ text = "BACK TO MENU"
 script = SubResource("GDScript_vtpab")
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="." unique_id=904440793]
+[node name="TitleImage" type="Panel" parent="." unique_id=904440793]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

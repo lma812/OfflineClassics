@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://cs65ylu3lcbik" path="res://word_bomb/scripts/KeyboardManager.gd" id="2_u0ppc"]
 [ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="3_u0ppc"]
 [ext_resource type="PackedScene" uid="uid://bc736p8pupghi" path="res://shared/theme/hud.tscn" id="4_btytf"]
+[ext_resource type="PackedScene" uid="uid://udyht2080hyc" path="res://yahtzee/components/hud.tscn" id="4_bwlmx"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="5_lt8pi"]
+[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="6_bwlmx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u0ppc"]
 font_size = 24
@@ -11,13 +14,30 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_btytf"]
 font_size = 36
 
-[node name="WordBomb" type="Node2D" unique_id=371201991]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lt8pi"]
+bg_color = Color(0.34443408, 0.5597626, 0.7100128, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 20
+shadow_color = Color(0.08235294, 0.19607843, 0.2627451, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pokp2"]
+texture = ExtResource("6_bwlmx")
+
+[node name="WordBomb" type="Control" unique_id=809651326]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("3_u0ppc")
 script = ExtResource("1_c00l8")
 
 [node name="KeyboardManager" type="Node" parent="." unique_id=762279230]
 script = ExtResource("2_u0ppc")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1921975970]
+layout_mode = 0
 offset_top = 152.0
 offset_right = 720.0
 offset_bottom = 1280.0
@@ -26,6 +46,7 @@ offset_bottom = 1280.0
 custom_minimum_size = Vector2(600, 1000)
 layout_mode = 2
 theme = ExtResource("3_u0ppc")
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1431237872]
 layout_mode = 1
@@ -38,35 +59,73 @@ theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 15
+metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1873245950]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TopBar" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1906276798]
-layout_mode = 2
+[node name="TopBar" type="HBoxContainer" parent="CenterContainer/Panel" unique_id=1906276798]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.060000002
+anchor_right = 0.5
+anchor_bottom = 0.060000002
+offset_left = -224.0
+offset_top = -20.000004
+offset_right = 218.0
+offset_bottom = 19.999996
 theme_override_constants/separation = 20
 alignment = 1
+metadata/_edit_lock_ = true
 
-[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/TopBar" unique_id=190855452]
+[node name="ScoreLabel" type="Label" parent="CenterContainer/Panel/TopBar" unique_id=190855452]
 layout_mode = 2
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_u0ppc")
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/TopBar" unique_id=1509974923]
+[node name="TitleLabel" type="Label" parent="CenterContainer/Panel/TopBar" unique_id=1509974923]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "WORD BOMB"
 label_settings = SubResource("LabelSettings_btytf")
 horizontal_alignment = 1
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer/TopBar" unique_id=656427788]
+[node name="RestartButton" type="Button" parent="CenterContainer/Panel/TopBar" unique_id=718087250]
+custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
-text = "   ⚙   "
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 45
+text = "↻"
+
+[node name="Hud" parent="CenterContainer/Panel/TopBar/RestartButton" unique_id=502157937 instance=ExtResource("4_bwlmx")]
+
+[node name="Constraint" type="Label" parent="CenterContainer/Panel" unique_id=142396560]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 184.0
+offset_right = 548.0
+offset_bottom = 289.0
+theme = ExtResource("3_u0ppc")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+
+[node name="Timer" type="Label" parent="CenterContainer/Panel" unique_id=1419395628]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 96.0
+offset_right = 392.0
+offset_bottom = 133.5
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_btytf")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1873245950]
+layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Guess" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1096915117]
 layout_mode = 2
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
 
 [node name="KeyboardContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=2076724958]
 layout_mode = 2
@@ -87,4 +146,92 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("4_btytf")]
+[node name="Hud" parent="." unique_id=292118410 instance=ExtResource("4_btytf")]
+
+[node name="GameOverScreen" type="CanvasLayer" parent="." unique_id=480878515]
+visible = false
+
+[node name="Panel" type="Panel" parent="GameOverScreen" unique_id=1898995794]
+offset_left = 136.0
+offset_top = 312.0
+offset_right = 584.0
+offset_bottom = 864.0
+theme = ExtResource("3_u0ppc")
+theme_override_styles/panel = SubResource("StyleBoxFlat_lt8pi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverScreen" unique_id=93980757]
+anchors_preset = -1
+anchor_left = 0.124000005
+anchor_top = 0.26500002
+anchor_right = 0.89000005
+anchor_bottom = 0.75100005
+offset_left = 213.72
+offset_top = 60.799988
+offset_right = -223.80005
+offset_bottom = -285.28003
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_u0ppc")
+metadata/_edit_lock_ = true
+
+[node name="GameOver" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=1187243850]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("3_u0ppc")
+theme_override_colors/font_shadow_color = Color(0.9647059, 0, 0.32941177, 1)
+theme_override_fonts/font = ExtResource("5_lt8pi")
+theme_override_font_sizes/font_size = 70
+horizontal_alignment = 1
+
+[node name="Reason" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=420614554]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_shadow_color = Color(0.30694947, 0.99999994, 0.88074607, 1)
+theme_override_fonts/font = ExtResource("5_lt8pi")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Highscore" type="Label" parent="GameOverScreen/VBoxContainer" unique_id=1586040569]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_lt8pi")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="TitleImage" type="Panel" parent="GameOverScreen" unique_id=1010105872]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 65.96002
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pokp2")
+
+[node name="Buttons" type="VBoxContainer" parent="GameOverScreen" unique_id=983568777]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.61200005
+anchor_right = 0.5
+anchor_bottom = 0.61200005
+offset_left = -101.0
+offset_top = -40.360046
+offset_right = 97.5
+offset_bottom = 58.639954
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_u0ppc")
+
+[node name="Restart" type="Button" parent="GameOverScreen/Buttons" unique_id=560814309]
+layout_mode = 2
+text = "Restart"
+
+[node name="BacktoMenu" type="Button" parent="GameOverScreen/Buttons" unique_id=969666414]
+layout_mode = 2
+text = "Back to Menu"
+
+[connection signal="pressed" from="GameOverScreen/Buttons/Restart" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/Buttons/BacktoMenu" to="." method="_on_back_button_pressed"]

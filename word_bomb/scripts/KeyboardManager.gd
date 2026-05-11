@@ -56,9 +56,9 @@ func create_keyboard() -> void:
 
 func _on_keyboard_pressed(key: String) -> void:
 	if key == "ENTER":
-		_on_enter()
+		enter_pressed.emit()
 	elif key == "⌫":
-		_on_backspace()
+		backspace_pressed.emit()
 	else:
-		_on_letter(key)
+		letter_pressed.emit(key)
 		
