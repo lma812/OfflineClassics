@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://fnyrjr57nq3g"]
+
+[ext_resource type="Script" uid="uid://cy3k0veid4rg8" path="res://wordle/Scripts/GameManager.gd" id="1_d5bvf"]
+[ext_resource type="Script" uid="uid://di3105g7df3qx" path="res://wordle/Scripts/InputManager.gd" id="2_61tsi"]
+[ext_resource type="Script" uid="uid://baphy7ldgvgyl" path="res://wordle/Scripts/WordManager.gd" id="3_g6ve2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5bvf"]
+bg_color = Color(0.07058824, 0.07058824, 0.07450981, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.22745098, 0.22745098, 0.23529412, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5bvf"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_61tsi"]
+font_size = 36
+
+[node name="Wordle" type="Control" unique_id=310214314]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameManager" type="Node" parent="." unique_id=2114252239]
+script = ExtResource("1_d5bvf")
+
+[node name="InputManager" type="Node" parent="." unique_id=1340205881]
+script = ExtResource("2_61tsi")
+
+[node name="WordManager" type="Node" parent="." unique_id=2080570392]
+script = ExtResource("3_g6ve2")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=121900116]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1565916798]
+custom_minimum_size = Vector2(600, 1000)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d5bvf")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1822774966]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=633390272]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="TopBar" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=317407625]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/TopBar" unique_id=820203790]
+layout_mode = 2
+text = "SCORE: 0"
+label_settings = SubResource("LabelSettings_d5bvf")
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/TopBar" unique_id=1585276655]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "WORDLE"
+label_settings = SubResource("LabelSettings_61tsi")
+horizontal_alignment = 1
+
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer/TopBar" unique_id=1419694736]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "   ⚙   "
+
+[node name="GuessGrid" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1037758979]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 5
+
+[node name="KeyboardContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1132667402]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Row1" type="HBoxContainer" parent="CenterContainer/VBoxContainer/KeyboardContainer" unique_id=1165137583]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Row2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/KeyboardContainer" unique_id=2044858617]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Row3" type="HBoxContainer" parent="CenterContainer/VBoxContainer/KeyboardContainer" unique_id=1509407203]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
