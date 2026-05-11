@@ -17,6 +17,7 @@ func get_default_scores() -> Dictionary:
 
 func _ready() -> void:
 	_data = _load()
+	print("data is loaded")
 	
 func get_game(game: String) -> Dictionary:
 	return _data.get(game, get_default_scores().get(game, {}))
