@@ -1,11 +1,10 @@
 extends Node
 
-@onready var input_label = $CenterContainer/VBoxContainer/Guess
-var keyboard_buttons = {}
-var current_input := ""
 signal letter_pressed(letter: String)
 signal backspace_pressed
 signal enter_pressed
+
+var keyboard_buttons = {}
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -63,16 +62,3 @@ func _on_keyboard_pressed(key: String) -> void:
 	else:
 		_on_letter(key)
 		
-
-func _on_backspace() -> void:
-	if current_input.length() > 0:
-		current_input = current_input.substr(0, current_input.length() - 1)
-		input_label.text = current_input
-
-func _on_letter(key:String) -> void:
-	if current_input.length() < 30:
-		current_input += key
-		input_label.text = current_input
-
-func _on_enter() -> void:
-	emit_signal("enter_pressed", current_input)
