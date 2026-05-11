@@ -13,7 +13,7 @@ func _on_snake_pressed():
 	get_tree().change_scene_to_file("res://snake/components/ui/start_screen.tscn")
 
 func _on_2048_pressed():
-	get_tree().change_scene_to_file("res://2048/2048.tscn")
+	get_tree().change_scene_to_file("res://2048/Scenes/2048MainMenu.tscn")
 
 func _on_wordle_pressed():
-	get_tree().change_scene_to_file("res://wordle/Scenes/wordle.tscn")
+	get_tree().change_scene_to_file("res://wordle/Scenes/MainMenu.tscn")
