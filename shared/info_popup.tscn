@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cuirquf5bakkc"]
+
+[ext_resource type="Script" uid="uid://dxwuiv70vdwve" path="res://shared/info_popup.gd" id="1_1eq1f"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="2_yryjk"]
+
+[node name="InfoPopup" type="CanvasLayer" unique_id=124219337]
+script = ExtResource("1_1eq1f")
+
+[node name="Panel" type="Panel" parent="." unique_id=580545554]
+anchors_preset = -1
+anchor_left = 0.49400002
+anchor_top = 0.74100006
+anchor_right = 0.49400002
+anchor_bottom = 0.74100006
+offset_left = -123.68002
+offset_top = -36.480103
+offset_right = 124.31998
+offset_bottom = 131.5199
+theme = ExtResource("2_yryjk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1967358600]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -35.0
+offset_right = 20.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1082812734]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1944366776]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer" unique_id=215130902]
+layout_mode = 2
+
+[node name="Content" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=301085714]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=1671364211]
+layout_mode = 2

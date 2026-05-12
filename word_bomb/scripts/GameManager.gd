@@ -152,19 +152,13 @@ func count_down(seconds: int) -> void:
 	handle_game_over()
 
 func handle_game_over() -> void: 
-	var word_bomb = SaveManager.get_game("word_bomb")
-	var new_high_score = int(max(score, word_bomb["high_score"]))
 	var reason = current_constraint
 	
-	SaveManager.update_game("word_bomb", {
-		"high_score": new_high_score,
-		"games_played": word_bomb["games_played"] + 1
-	})
+	SaveManager.set_high_score("word_bomb", score)
+	SaveManager.increment_games_played("word_bomb")
 	
-	SaveManager._save()
-	print("saved: ", SaveManager.get_game("word_bomb"))
-	
-	show_game_over_screen(reason, str(new_high_score))
+	var word_bomb = SaveManager.get_game("word_bomb")
+	show_game_over_screen(reason, str(word_bomb["high_score"]))
 	
 func show_game_over_screen(reason: String, new_high_score: String):
 	game_over_ui.show()
