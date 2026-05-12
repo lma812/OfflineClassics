@@ -10,11 +10,11 @@ var high_score := 0
 
 var menu_open := false
 
-@onready var guess_grid = $"../CenterContainer/VBoxContainer/GuessGrid"
+@onready var guess_grid = $"../Panel/MarginContainer/VBoxContainer/GuessGrid"
 @onready var input_manager = $"../InputManager"
 @onready var word_manager = $"../WordManager"
-@onready var options_button = $"../CenterContainer/VBoxContainer/TopBar/OptionsButton"
-@onready var score_label = $"../CenterContainer/VBoxContainer/TopBar/ScoreLabel"
+@onready var options_button = $"../Panel/MarginContainer/VBoxContainer/TopBar/OptionsButton"
+@onready var score_label = $"../Panel/MarginContainer/VBoxContainer/TopBar/ScoreLabel"
 
 var tile_scene = preload("res://wordle/Scenes/LetterTile.tscn")
 var options_scene = preload("res://wordle/Scenes/WordleOptions.tscn")
@@ -58,9 +58,7 @@ func create_grid() -> void:
 			guesses[row].append("")
 
 func create_keyboard() -> void:
-	var keyboard = get_parent().get_node(
-		"CenterContainer/VBoxContainer/KeyboardContainer"
-	)
+	var keyboard = $"../Panel/MarginContainer/VBoxContainer/KeyboardContainer"
 
 	var rows = [
 		["Q","W","E","R","T","Y","U","I","O","P"],
@@ -77,7 +75,7 @@ func create_keyboard() -> void:
 			var button = Button.new()
 
 			button.text = key
-			button.custom_minimum_size = Vector2(42, 58)
+			button.custom_minimum_size = Vector2(56, 70)
 
 			button.add_theme_font_size_override(
 				"font_size",
@@ -85,10 +83,10 @@ func create_keyboard() -> void:
 			)
 
 			if key == "ENTER":
-				button.custom_minimum_size.x = 90
+				button.custom_minimum_size.x = 110
 
 			if key == "⌫":
-				button.custom_minimum_size.x = 55
+				button.custom_minimum_size.x = 70
 
 			button.pressed.connect(func():
 				_on_keyboard_pressed(key)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dc6kx555ta8l3"]
 
-[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_w4yrf"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_w4yrf"]
 [ext_resource type="Script" uid="uid://cpqwhxly4m7q1" path="res://2048/Scripts/GameStateManager.gd" id="2_uwq08"]
 [ext_resource type="Script" uid="uid://xwssj383u38g" path="res://2048/Scripts/GridManager.gd" id="3_sm3cv"]
 [ext_resource type="Script" uid="uid://ot2gud5t0brn" path="res://2048/Scripts/MoveManager.gd" id="4_nq60a"]
@@ -67,7 +67,7 @@ grow_horizontal = 2
 
 [node name="Panel" type="Panel" parent="CenterContainer" unique_id=52903854]
 clip_contents = true
-custom_minimum_size = Vector2(600, 700)
+custom_minimum_size = Vector2(600, 850)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,9 +84,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1528919637]
 layout_mode = 1
@@ -95,7 +95,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 60
+alignment = 1
 
 [node name="TitleRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1547379623]
 layout_mode = 2

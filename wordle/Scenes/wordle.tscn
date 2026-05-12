@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://fnyrjr57nq3g"]
 
 [ext_resource type="Script" uid="uid://cy3k0veid4rg8" path="res://wordle/Scripts/GameManager.gd" id="1_d5bvf"]
-[ext_resource type="Script" path="res://wordle/Scripts/InputManager.gd" id="2_61tsi"]
-[ext_resource type="Script" path="res://wordle/Scripts/WordManager.gd" id="3_g6ve2"]
+[ext_resource type="Script" uid="uid://di3105g7df3qx" path="res://wordle/Scripts/InputManager.gd" id="2_61tsi"]
+[ext_resource type="Script" uid="uid://baphy7ldgvgyl" path="res://wordle/Scripts/WordManager.gd" id="3_g6ve2"]
 [ext_resource type="PackedScene" uid="uid://bkfssjiou06oc" path="res://wordle/Scenes/hud.tscn" id="4_61tsi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5bvf"]
@@ -40,81 +40,86 @@ script = ExtResource("2_61tsi")
 [node name="WordManager" type="Node" parent="." unique_id=2080570392]
 script = ExtResource("3_g6ve2")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=121900116]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("4_61tsi")]
 
-[node name="Panel" type="Panel" parent="CenterContainer" unique_id=1565916798]
-custom_minimum_size = Vector2(600, 1050)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_d5bvf")
-
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=1822774966]
+[node name="Panel" type="Panel" parent="." unique_id=1565916798]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_d5bvf")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1822774966]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.5
+offset_top = -103.5
+offset_right = 145.5
+offset_bottom = 103.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=633390272]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=633390272]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1585276655]
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1585276655]
 layout_mode = 2
 text = "WORDLE"
 label_settings = SubResource("LabelSettings_61tsi")
 horizontal_alignment = 1
 
-[node name="TopBar" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=317407625]
+[node name="TopBar" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=317407625]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer/TopBar" unique_id=820203790]
+[node name="ScoreLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/TopBar" unique_id=820203790]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SCORE: 0"
 label_settings = SubResource("LabelSettings_d5bvf")
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer/TopBar" unique_id=1419694736]
+[node name="OptionsButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/TopBar" unique_id=1419694736]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "   ⚙   "
 
-[node name="GuessGrid" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1037758979]
+[node name="GuessGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1037758979]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 5
 
-[node name="KeyboardContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1132667402]
+[node name="KeyboardContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1132667402]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Row1" type="HBoxContainer" parent="CenterContainer/VBoxContainer/KeyboardContainer" unique_id=1165137583]
+[node name="Row1" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/KeyboardContainer" unique_id=1165137583]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Row2" type="HBoxContainer" parent="CenterContainer/VBoxContainer/KeyboardContainer" unique_id=2044858617]
+[node name="Row2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/KeyboardContainer" unique_id=2044858617]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Row3" type="HBoxContainer" parent="CenterContainer/VBoxContainer/KeyboardContainer" unique_id=1509407203]
+[node name="Row3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/KeyboardContainer" unique_id=1509407203]
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
-
-[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("4_61tsi")]
