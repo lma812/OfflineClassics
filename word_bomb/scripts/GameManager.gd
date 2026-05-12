@@ -8,6 +8,7 @@ extends Node
 @onready var game_over_ui = $GameOverScreen
 
 var options_scene = preload("res://shared/options_menu.tscn")
+var end_scene = preload("res://word_bomb/scenes/end_screen.tscn")
 
 var word_set := {}
 var current_input := ""
@@ -156,21 +157,20 @@ func count_down(seconds: int) -> void:
 		handle_game_over()
 
 func handle_game_over() -> void: 
-	var reason = current_constraint
 	
 	SaveManager.set_high_score("word_bomb", score)
 	SaveManager.increment_games_played("word_bomb")
 	
 	var word_bomb = SaveManager.get_game("word_bomb")
-	show_game_over_screen(reason, str(word_bomb["high_score"]))
+	show_game_over_screen(word_bomb["high_score"])
 	
-func show_game_over_screen(reason: String, new_high_score: String):
-	game_over_ui.show()
-	# Update the label to say why they died
-	print("highscore:", new_high_score)
-	game_over_ui.get_node("VBoxContainer/Highscore").text = "HIGHSCORE: %s" % new_high_score
-	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
-	game_over_ui.get_node("VBoxContainer/Reason").text = "work on this!!: " + reason
+func show_game_over_screen(new_high_score: int):
+	var game_over_ui = end_scene.instantiate()
+	add_child(game_over_ui)
+	game_over_ui.setup(
+		score,
+		new_high_score
+	)
 
 func _on_restart_button_pressed():
 	# Reloads the current scene to start fresh

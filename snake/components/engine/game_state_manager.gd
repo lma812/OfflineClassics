@@ -5,6 +5,8 @@ class_name GameStateManager
 @onready var game_over_ui = $Background2/GameOverScreen
 
 var options_scene = preload("res://shared/options_menu.tscn")
+var end_scene = preload("res://snake/components/ui/end_screen.tscn")
+
 var game_active: bool = true
 var score: int
 
@@ -67,15 +69,15 @@ func handle_game_over(reason: String):
 	SaveManager._save()
 	print("saved: ", SaveManager.get_game("snake"))
 	
-	show_game_over_screen(reason, str(new_high_score))
+	show_game_over_screen(new_high_score)
 	
-func show_game_over_screen(reason: String, new_high_score: String):
-	game_over_ui.show()
-	# Update the label to say why they died
-	print("highscore:", new_high_score)
-	game_over_ui.get_node("VBoxContainer/Highscore").text = "HIGHSCORE: %s" % new_high_score
-	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
-	game_over_ui.get_node("VBoxContainer/Reason").text = "HIT " + reason
+func show_game_over_screen(new_high_score: int):
+	var game_over_ui = end_scene.instantiate()
+	add_child(game_over_ui)
+	game_over_ui.setup(
+		score,
+		new_high_score
+	)
 
 # Connect the Button's "pressed" signal to this function
 func _on_restart_button_pressed():
