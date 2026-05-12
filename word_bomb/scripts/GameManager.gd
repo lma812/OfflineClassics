@@ -7,6 +7,8 @@ extends Node
 @onready var timer = $CenterContainer/Panel/Timer
 @onready var game_over_ui = $GameOverScreen
 
+var options_scene = preload("res://shared/options_menu.tscn")
+
 var word_set := {}
 var current_input := ""
 var current_constraint := ""
@@ -15,6 +17,7 @@ var lives = 3
 var score = 0
 var seconds = 15
 var timer_id = 0
+var is_paused: = false
 
 func _ready() -> void:
 	lives = 3
@@ -132,7 +135,19 @@ func count_down(seconds: int) -> void:
 			return
 
 		timer.text = str(i)
-		await get_tree().create_timer(1.0).timeout
+		print(i)
+		var elapsed := 0.0
+		while elapsed < 1.0:
+			if current_id != timer_id:
+				return
+			if not is_inside_tree():
+				return
+			while is_paused:
+				if not is_inside_tree():
+					return
+				await get_tree().process_frame
+			await get_tree().process_frame
+			elapsed += get_process_delta_time()
 	
 	handle_game_over()
 
@@ -159,11 +174,19 @@ func show_game_over_screen(reason: String, new_high_score: String):
 	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
 	game_over_ui.get_node("VBoxContainer/Reason").text = "work on this!!: " + reason
 
-func _on_restart_button_pressed():
-	# Reloads the current scene to start fresh
-	print("scene reload")
-	get_tree().reload_current_scene()
+#func _on_restart_button_pressed():
+	## Reloads the current scene to start fresh
+	#print("scene reload")
+	#get_tree().reload_current_scene()
+#
+#func _on_back_button_pressed():
+	#get_tree().change_scene_to_file("res://main_menu.tscn")
 
-func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://main_menu.tscn")
-	
+func _on_options_button_pressed() -> void:
+	is_paused = true
+	var options_menu = options_scene.instantiate()
+	options_menu.resume_requested.connect(_on_resume)
+	add_child(options_menu)
+
+func _on_resume() -> void:
+	is_paused = false

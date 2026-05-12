@@ -87,12 +87,12 @@ text = "WORD BOMB"
 label_settings = SubResource("LabelSettings_btytf")
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="CenterContainer/Panel/TopBar" unique_id=718087250]
-custom_minimum_size = Vector2(75, 75)
+[node name="OptionsButton" type="Button" parent="CenterContainer/Panel/TopBar" unique_id=2139283910]
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 4
-theme_override_font_sizes/font_size = 45
-text = "↻"
+theme_override_font_sizes/font_size = 36
+text = "⚙"
 
 [node name="Constraint" type="Label" parent="CenterContainer/Panel" unique_id=142396560]
 layout_mode = 0
@@ -230,6 +230,6 @@ text = "Restart"
 layout_mode = 2
 text = "Back to Menu"
 
-[connection signal="pressed" from="CenterContainer/Panel/TopBar/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/TopBar/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/Buttons/Restart" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/Buttons/BacktoMenu" to="." method="_on_back_button_pressed"]

@@ -1,10 +1,5 @@
 extends Control
 #const COLORS = preload("res://shared/theme/colors.tres")
-
-# Called when the node enters the scene tree for the first time.
-
-
-
 func _ready():
 	#print(COLORS)
 	#print(COLORS.primary)
