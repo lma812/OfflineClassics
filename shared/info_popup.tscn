@@ -8,14 +8,14 @@ script = ExtResource("1_1eq1f")
 
 [node name="Panel" type="Panel" parent="." unique_id=580545554]
 anchors_preset = -1
-anchor_left = 0.49400002
-anchor_top = 0.74100006
-anchor_right = 0.49400002
-anchor_bottom = 0.74100006
-offset_left = -123.68002
-offset_top = -36.480103
-offset_right = 124.31998
-offset_bottom = 131.5199
+anchor_left = 0.483
+anchor_top = 0.77800006
+anchor_right = 0.483
+anchor_bottom = 0.77800006
+offset_left = -123.76001
+offset_top = -83.84009
+offset_right = 124.23999
+offset_bottom = 84.15991
 theme = ExtResource("2_yryjk")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1967358600]
