@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_resume_pressed() -> void:
 	get_tree().current_scene.get_node(
+		
 		"GameManager"
 	).menu_open = false
 

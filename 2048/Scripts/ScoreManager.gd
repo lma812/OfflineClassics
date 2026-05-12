@@ -18,6 +18,7 @@ func update_score(new_score: int) -> void:
 	score_label.text = "SCORE: " + str(new_score)
 
 func _process(delta: float) -> void:
+	
 	if timer_label == null:
 		return
 	
