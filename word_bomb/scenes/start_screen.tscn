@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://ivvfoth8f8ow"]
+[gd_scene format=3 uid="uid://dsa6u4k2jq1jt"]
 
-[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_4gf48"]
-[ext_resource type="Script" uid="uid://hxuueha5w4y1" path="res://snake/components/ui/start_screen.gd" id="1_rx5u5"]
-[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_ahccb"]
-[ext_resource type="Texture2D" uid="uid://b5nunfrwdlc0m" path="res://snake/assets/snakeTitleImage-removebg-preview.png" id="3_4gf48"]
-[ext_resource type="PackedScene" uid="uid://0dc8ys8q44mn" path="res://snake/components/ui/hud.tscn" id="4_ahccb"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_bbbao"]
+[ext_resource type="Script" uid="uid://bm7j63ypopxd8" path="res://word_bomb/scripts/start_screen.gd" id="2_bbbao"]
+[ext_resource type="PackedScene" uid="uid://0dc8ys8q44mn" path="res://snake/components/ui/hud.tscn" id="3_pof8j"]
+[ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="4_q17d3"]
+[ext_resource type="Texture2D" uid="uid://7hm0a4cqdjrn" path="res://word_bomb/assets/bomb-removebg-preview.png" id="5_bbbao"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rwqi7"]
-texture = ExtResource("3_4gf48")
+texture = ExtResource("5_bbbao")
 
 [node name="StartScreen" type="Control" unique_id=1993310050]
 layout_mode = 3
@@ -22,10 +22,10 @@ offset_right = 360.0
 offset_bottom = 640.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_4gf48")
-script = ExtResource("1_rx5u5")
+theme = ExtResource("1_bbbao")
+script = ExtResource("2_bbbao")
 
-[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("4_ahccb")]
+[node name="Hud" parent="." unique_id=502157937 instance=ExtResource("3_pof8j")]
 
 [node name="Body" type="BoxContainer" parent="." unique_id=1749149686]
 layout_mode = 1
@@ -53,8 +53,8 @@ offset_top = -102.880005
 offset_right = 290.0
 offset_bottom = 102.119995
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 150
-text = "SNAKE"
+theme_override_font_sizes/font_size = 100
+text = "WORD BOMB"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -87,7 +87,7 @@ metadata/_edit_lock_ = true
 [node name="BacktoMenu" type="Button" parent="Menu" unique_id=870389785]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2_ahccb")
+theme_override_fonts/font = ExtResource("4_q17d3")
 theme_override_font_sizes/font_size = 40
 text = "BACK TO MENU"
 metadata/_edit_lock_ = true
@@ -99,10 +99,10 @@ anchor_left = 0.5
 anchor_top = 0.535
 anchor_right = 0.5
 anchor_bottom = 0.535
-offset_left = -108.0
-offset_top = -92.80005
-offset_right = 100.35559
-offset_bottom = 94.71997
+offset_left = -99.0
+offset_top = -110.80005
+offset_right = 139.88892
+offset_bottom = 104.19995
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rwqi7")

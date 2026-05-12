@@ -39,7 +39,7 @@ func _on_wordle_pressed():
 	get_tree().change_scene_to_file("res://wordle/Scenes/MainMenu.tscn")
 
 func _on_word_bomb_pressed():
-	get_tree().change_scene_to_file("res://word_bomb/scenes/word_bomb.tscn")
+	get_tree().change_scene_to_file("res://word_bomb/scenes/start_screen.tscn")
 
 func _on_info_pressed(game: String) -> void:
 	var data = SaveManager.get_game(game)
