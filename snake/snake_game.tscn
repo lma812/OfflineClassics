@@ -156,6 +156,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "⚙"
+flat = true
 
 [node name="UnpauseTimer" type="Label" parent="." unique_id=1274348572]
 layout_mode = 1

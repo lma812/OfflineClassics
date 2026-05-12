@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dc6kx555ta8l3"]
 
-[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_w4yrf"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_w4yrf"]
 [ext_resource type="Script" uid="uid://cpqwhxly4m7q1" path="res://2048/Scripts/GameStateManager.gd" id="2_uwq08"]
 [ext_resource type="Script" uid="uid://xwssj383u38g" path="res://2048/Scripts/GridManager.gd" id="3_sm3cv"]
 [ext_resource type="Script" uid="uid://ot2gud5t0brn" path="res://2048/Scripts/MoveManager.gd" id="4_nq60a"]
@@ -117,6 +117,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "⚙"
+flat = true
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=837348473]
 custom_minimum_size = Vector2(510, 500)

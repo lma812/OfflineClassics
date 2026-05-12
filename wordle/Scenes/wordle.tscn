@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://fnyrjr57nq3g"]
 
 [ext_resource type="Script" uid="uid://cy3k0veid4rg8" path="res://wordle/Scripts/GameManager.gd" id="1_d5bvf"]
-[ext_resource type="Script" path="res://wordle/Scripts/InputManager.gd" id="2_61tsi"]
-[ext_resource type="Script" path="res://wordle/Scripts/WordManager.gd" id="3_g6ve2"]
+[ext_resource type="Script" uid="uid://di3105g7df3qx" path="res://wordle/Scripts/InputManager.gd" id="2_61tsi"]
+[ext_resource type="Script" uid="uid://baphy7ldgvgyl" path="res://wordle/Scripts/WordManager.gd" id="3_g6ve2"]
 [ext_resource type="PackedScene" uid="uid://bkfssjiou06oc" path="res://wordle/Scenes/hud.tscn" id="4_61tsi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5bvf"]
@@ -91,6 +91,7 @@ label_settings = SubResource("LabelSettings_d5bvf")
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "   ⚙   "
+flat = true
 
 [node name="GuessGrid" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1037758979]
 layout_mode = 2
