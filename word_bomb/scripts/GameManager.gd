@@ -2,9 +2,9 @@ extends Node
 
 @onready var KeyboardManager = $KeyboardManager
 @onready var input_label = $CenterContainer/VBoxContainer/Guess
-@onready var score_label = $CenterContainer/Panel/TopBar/ScoreLabel
-@onready var constraint_label = $CenterContainer/Panel/Constraint
-@onready var timer = $CenterContainer/Panel/Timer
+@onready var score_label = $Panel/TopBar/ScoreLabel
+@onready var constraint_label = $Panel/Constraint
+@onready var timer = $Panel/Timer
 @onready var game_over_ui = $GameOverScreen
 
 var options_scene = preload("res://shared/options_menu.tscn")
@@ -174,13 +174,13 @@ func show_game_over_screen(reason: String, new_high_score: String):
 	game_over_ui.get_node("VBoxContainer/GameOver").text = "GAME OVER"
 	game_over_ui.get_node("VBoxContainer/Reason").text = "work on this!!: " + reason
 
-#func _on_restart_button_pressed():
-	## Reloads the current scene to start fresh
-	#print("scene reload")
-	#get_tree().reload_current_scene()
-#
-#func _on_back_button_pressed():
-	#get_tree().change_scene_to_file("res://main_menu.tscn")
+func _on_restart_button_pressed():
+	# Reloads the current scene to start fresh
+	print("scene reload")
+	get_tree().reload_current_scene()
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 func _on_options_button_pressed() -> void:
 	is_paused = true
