@@ -39,7 +39,7 @@ func create_keyboard() -> void:
 			button.text = key
 			button.custom_minimum_size = Vector2(42, 58)
 
-			button.add_theme_font_size_override("font_size", 24)
+			button.add_theme_font_size_override("font_size", 30)
 
 			if key == "ENTER":
 				button.custom_minimum_size.x = 90

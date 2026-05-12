@@ -4,7 +4,7 @@ extends Node
 @onready var input_label = $CenterContainer/VBoxContainer/Guess
 @onready var score_label = $Panel/TopBar/ScoreLabel
 @onready var constraint_label = $Panel/Constraint
-@onready var timer = $Panel/Timer
+@onready var timer = $Panel/HBoxContainer/Timer
 @onready var game_over_ui = $GameOverScreen
 
 var options_scene = preload("res://shared/options_menu.tscn")
@@ -52,12 +52,12 @@ func _on_letter(key:String) -> void:
 		update_ui()
 
 func _on_enter() -> void:
-	var word = current_input.to_lower()
+	var word = current_input.to_upper()
 
 	if validate(word):
 		handle_correct(word)
 	else:
-		handle_wrong(word)
+		handle_wrong()
 
 	current_input = ""
 	update_ui()
@@ -65,7 +65,6 @@ func _on_enter() -> void:
 func validate(word:String) -> bool:
 	# must have the str literal in the word
 	# must be a valid word. 
-	word = word.to_upper()
 
 	if not word_set.has(word):
 		return false
@@ -88,13 +87,13 @@ func handle_correct(word: String):
 	constraint_label.text = current_constraint
 	count_down(seconds)
 	
-func handle_wrong(word: String):
-	lives -= 1
+func handle_wrong():
 	shake_ui()
+	
 
 func generate_constraint() -> String:
 	var words = word_set.keys()
-	var random_number = randi_range(1,3)
+	var random_number = randi_range(2,4)
 	var random_word = words[randi() % words.size()]
 	
 	return random_word.substr(0, random_number) 
@@ -148,8 +147,13 @@ func count_down(seconds: int) -> void:
 				await get_tree().process_frame
 			await get_tree().process_frame
 			elapsed += get_process_delta_time()
-	
-	handle_game_over()
+	if lives > 1:
+		lives -= 1
+		$Panel/TopBar/LivesLabel.text = "LIVES: %s" % lives
+		shake_ui()
+		regenerate()
+	else:
+		handle_game_over()
 
 func handle_game_over() -> void: 
 	var reason = current_constraint
@@ -184,3 +188,8 @@ func _on_options_button_pressed() -> void:
 
 func _on_resume() -> void:
 	is_paused = false
+
+func regenerate() -> void:
+	current_constraint = generate_constraint()
+	constraint_label.text = current_constraint
+	count_down(seconds)

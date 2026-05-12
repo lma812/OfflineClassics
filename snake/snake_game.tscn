@@ -146,12 +146,17 @@ text = "Restart"
 layout_mode = 2
 text = "Back to Menu"
 
-[node name="OptionsButton" type="Button" parent="." unique_id=706490192]
-layout_mode = 0
-offset_left = 520.0
-offset_top = -72.0
-offset_right = 579.0
-offset_bottom = -24.5
+[node name="OptionsButton" type="Button" parent="Background2" unique_id=706490192]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95100003
+anchor_top = -0.08800001
+anchor_right = 0.95100003
+anchor_bottom = -0.08800001
+offset_left = -29.276001
+offset_top = -23.83997
+offset_right = 29.723999
+offset_bottom = 23.66003
 size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
@@ -176,4 +181,4 @@ theme_override_font_sizes/font_size = 75
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="pressed" from="Background2/GameOverScreen/Buttons/Restart" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Background2/GameOverScreen/Buttons/BacktoMenu" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Background2/OptionsButton" to="." method="_on_options_button_pressed"]
