@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkfssjiou06oc" path="res://wordle/Scenes/hud.tscn" id="4_61tsi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5bvf"]
-bg_color = Color(0.07058824, 0.07058824, 0.07450981, 1)
+bg_color = Color(0.15686275, 0.29411766, 0.3882353, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
