@@ -16,7 +16,7 @@ var menu_open := false
 @onready var options_button = $"../CenterContainer/VBoxContainer/TopBar/OptionsButton"
 @onready var score_label = $"../CenterContainer/VBoxContainer/TopBar/ScoreLabel"
 
-var tile_scene = preload("res://wordle/scenes/LetterTile.tscn")
+var tile_scene = preload("res://wordle/Scenes/LetterTile.tscn")
 var options_scene = preload("res://wordle/Scenes/WordleOptions.tscn")
 var lose_scene = preload("res://wordle/Scenes/WordleLose.tscn")
 
@@ -98,15 +98,15 @@ func create_keyboard() -> void:
 
 			keyboard_buttons[key] = button
 
+# FIX: emit signals instead of calling functions directly
+# matches Word Bomb's approach which works reliably on Android
 func _on_keyboard_pressed(key: String) -> void:
 	if key == "ENTER":
-		_on_enter()
-
+		input_manager.enter_pressed.emit()
 	elif key == "⌫":
-		_on_backspace()
-
+		input_manager.backspace_pressed.emit()
 	else:
-		_on_letter(key)
+		input_manager.letter_pressed.emit(key)
 
 func _on_letter(letter: String) -> void:
 	if menu_open:
@@ -142,7 +142,6 @@ func _on_enter() -> void:
 		return
 
 	var guess = ""
-
 	for letter in guesses[current_row]:
 		guess += letter
 
@@ -174,9 +173,6 @@ func _on_enter() -> void:
 
 	current_row += 1
 	current_col = 0
-
-	# FIX: removed grab_focus() — it caused the options button to
-	# swallow the next Enter keypress as a button activation
 
 	if current_row >= ROWS:
 		SaveManager.increment_games_played("wordle")
@@ -281,27 +277,24 @@ func new_game() -> void:
 
 	reset_round()
 
+# FIX: shake the GuessGrid node itself since GridContainer
+# overrides child positions, making per-tile tweening impossible
 func shake_row(row_index: int) -> void:
-	var row_tiles = tiles[row_index]
-
-	var original_positions = []
-
-	for tile in row_tiles:
-		original_positions.append(tile.position)
-
 	var tween = create_tween()
-
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.set_ease(Tween.EASE_IN_OUT)
 
+	var original_x = guess_grid.position.x
+
 	for offset in [-14, 14, -10, 10, -6, 6, 0]:
-		for tile in row_tiles:
-			tween.parallel().tween_property(
-				tile,
-				"position:x",
-				original_positions[row_tiles.find(tile)].x + offset,
-				0.045
-			)
+		tween.tween_property(
+			guess_grid,
+			"position:x",
+			original_x + offset,
+			0.045
+		)
+
+	tween.tween_property(guess_grid, "position:x", original_x, 0.01)
 
 func show_win_popup(points: int) -> void:
 	var canvas = CanvasLayer.new()
@@ -424,8 +417,6 @@ func show_options() -> void:
 	var menu = options_scene.instantiate()
 
 	get_parent().add_child(menu)
-
-
 
 func add_score(guess_count: int) -> int:
 	var base_score = 100

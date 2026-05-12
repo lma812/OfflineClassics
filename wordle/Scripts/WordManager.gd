@@ -10,7 +10,7 @@ func _ready() -> void:
 	choose_word()
 
 func load_words() -> void:
-	var answer_file = FileAccess.open("res://wordle/words/answers.txt", FileAccess.READ)
+	var answer_file = FileAccess.open("res://wordle/Words/answers.txt", FileAccess.READ)
 
 	while not answer_file.eof_reached():
 		var word = answer_file.get_line().strip_edges().to_upper()
@@ -21,7 +21,7 @@ func load_words() -> void:
 
 	answer_file.close()
 
-	var allowed_file = FileAccess.open("res://wordle/words/allowed.txt", FileAccess.READ)
+	var allowed_file = FileAccess.open("res://wordle/Words/allowed.txt", FileAccess.READ)
 
 	while not allowed_file.eof_reached():
 		var word = allowed_file.get_line().strip_edges().to_upper()

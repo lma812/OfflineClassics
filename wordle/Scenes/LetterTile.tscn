@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dtg0sut8gwo4w"]
 
-[ext_resource type="Script" uid="uid://bw44e5xna882b" path="res://wordle/Scripts/LetterTile.gd" id="1_thsov"]
+[ext_resource type="Script" path="res://wordle/Scripts/LetterTile.gd" id="1_thsov"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3ixw"]
 bg_color = Color(0.07058824, 0.07058824, 0.07450981, 1)

@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file(
-		"res://wordle/Scenes/Wordle.tscn"
+		"res://wordle/Scenes/wordle.tscn"
 	)
 
 func _on_quit_pressed() -> void:
