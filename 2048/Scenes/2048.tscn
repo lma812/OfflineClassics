@@ -118,6 +118,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
 text = "⚙"
+flat = true
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=837348473]
 custom_minimum_size = Vector2(510, 500)

@@ -10,6 +10,8 @@ const CELL_SIZE = 32
 var body_coords: Array
 var body_segments: Array
 
+var touch_start := Vector2.ZERO
+
 #Starting Instance
 func generate_snake() -> void:
 	var start_x = int(GRID_WIDTH / 2)
@@ -40,6 +42,7 @@ func generate_snake() -> void:
 func get_head_pos() -> Vector2i:
 	return body_coords[0]
 
+
 #Direction Change
 func change_dir(event: InputEvent, current_dir: Vector2i)-> Vector2i:
 	if event.is_action_pressed("move_up") and current_dir != Vector2i.DOWN:
@@ -50,7 +53,31 @@ func change_dir(event: InputEvent, current_dir: Vector2i)-> Vector2i:
 		return Vector2i.LEFT
 	if event.is_action_pressed("move_right") and current_dir != Vector2i.LEFT:
 		return Vector2i.RIGHT
+		
+	# Swipe input
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_start = event.position
+		else:
+			var swipe = event.position - touch_start
+			# Ignore tiny taps
+			if swipe.length() < 20:
+				return current_dir
+			
+			if abs(swipe.x) > abs(swipe.y):
+				# Horizontal swipe
+				if swipe.x > 0 and current_dir != Vector2i.LEFT:
+					return Vector2i.RIGHT
+				elif swipe.x < 0 and current_dir != Vector2i.RIGHT:
+					return Vector2i.LEFT
+			else:
+				# Vertical swipe
+				if swipe.y > 0 and current_dir != Vector2i.UP:
+					return Vector2i.DOWN
+				elif swipe.y < 0 and current_dir != Vector2i.DOWN:
+					return Vector2i.UP
 	return current_dir
+	
 
 #Check Collision
 func check_collision(next_head_pos: Vector2i, snake_body: Array) -> String:

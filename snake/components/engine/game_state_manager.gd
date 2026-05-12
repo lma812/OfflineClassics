@@ -4,6 +4,7 @@ class_name GameStateManager
 @onready var SpawnManager = $Background2/SpawnManager
 @onready var game_over_ui = $Background2/GameOverScreen
 
+var options_scene = preload("res://shared/options_menu.tscn")
 var game_active: bool = true
 var score: int
 
@@ -80,10 +81,33 @@ func show_game_over_screen(reason: String, new_high_score: String):
 func _on_restart_button_pressed():
 	# Reloads the current scene to start fresh
 	print("scene reload")
+	get_tree().paused = false
 	get_tree().reload_current_scene()
+	
 
 func _on_back_button_pressed():
+	get_tree().paused = false
 	get_tree().change_scene_to_file("res://main_menu.tscn")
-
 	
+
 #Pause state
+func _on_options_button_pressed() -> void:
+	var options_menu = options_scene.instantiate()
+	options_menu.process_mode = Node.PROCESS_MODE_ALWAYS # so it doesn't get paused as well
+	options_menu.resume_requested.connect(_on_resume)
+	add_child(options_menu)
+	get_tree().paused = true
+
+func _on_resume() -> void:
+	if game_over_ui.visible:
+		get_tree().paused = false
+		return
+	get_tree().paused = false
+	$MoveTimer.stop()
+	var countdown_label = $UnpauseTimer 
+	for i in range(3, 0, -1):
+		countdown_label.text = str(i)
+		await get_tree().create_timer(1.0, false, false, true).timeout
+	countdown_label.text = ""
+	$MoveTimer.start(0.1)
+	

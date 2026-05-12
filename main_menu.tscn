@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bblkhe0fd43xi"]
 
 [ext_resource type="Script" uid="uid://nihl883ib80q" path="res://main_menu.gd" id="1_06t4h"]
-[ext_resource type="Theme" uid="uid://c2b87wdpxa08h" path="res://shared/theme/game_colors.tres" id="1_jix8l"]
+[ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="1_jix8l"]
 [ext_resource type="FontFile" uid="uid://bfs2bttrgbn5c" path="res://shared/fonts/nirakolu/Nirakolu.ttf" id="2_fu7sn"]
 [ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="3_jix8l"]
 
@@ -87,35 +87,75 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_constants/separation = 21
 
-[node name="YahtzeeButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2115011799]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1442178627]
+layout_mode = 2
+
+[node name="YahtzeeButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=2115011799]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 35
 text = "Yahtzee"
 
-[node name="SnakeButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1781382309]
-custom_minimum_size = Vector2(150, 50)
+[node name="YahtzeeInfoButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1362188843]
+layout_mode = 2
+text = "ⓘ"
+flat = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=199627304]
+layout_mode = 2
+
+[node name="SnakeButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=1781382309]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Snake"
 
-[node name="Game2048Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1116723117]
-custom_minimum_size = Vector2(150, 50)
+[node name="SnakeInfoButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=805300550]
+layout_mode = 2
+text = "ⓘ"
+flat = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1241460374]
+layout_mode = 2
+
+[node name="Game2048Button" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=1116723117]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_fu7sn")
 theme_override_font_sizes/font_size = 35
 text = "2048"
 
-[node name="WordleButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1577991030]
-custom_minimum_size = Vector2(150, 50)
+[node name="Game2048InfoButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer3" unique_id=725715173]
+layout_mode = 2
+text = "ⓘ"
+flat = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=332276579]
+layout_mode = 2
+
+[node name="WordleButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=1577991030]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Wordle"
 
-[node name="WordBombButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=181933868]
-custom_minimum_size = Vector2(150, 50)
+[node name="WordleInfoButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer4" unique_id=1472001853]
+layout_mode = 2
+text = "ⓘ"
+flat = true
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1453712035]
+layout_mode = 2
+
+[node name="WordBombButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=181933868]
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "Word Bomb
 "
+
+[node name="WordBombInfoButton" type="Button" parent="CenterContainer/VBoxContainer/HBoxContainer5" unique_id=779205549]
+layout_mode = 2
+text = "ⓘ"
+flat = true

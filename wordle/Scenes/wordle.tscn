@@ -96,6 +96,7 @@ label_settings = SubResource("LabelSettings_d5bvf")
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "   ⚙   "
+flat = true
 
 [node name="GuessGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1037758979]
 layout_mode = 2
