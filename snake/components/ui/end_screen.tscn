@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckvu5y24e0sl6"]
+[gd_scene format=3 uid="uid://db7m5panq8rau"]
 
 [ext_resource type="Script" uid="uid://d1eeq7owuf2wm" path="res://snake/components/ui/end_screen.gd" id="1_s2noh"]
 [ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="2_jbi8w"]

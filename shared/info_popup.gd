@@ -6,6 +6,9 @@ extends CanvasLayer
 
 func _ready() -> void:
 	close_button.pressed.connect(queue_free)
+	
+func set_position_near(pos: Vector2) -> void:
+	$Panel.global_position = pos
 
 func setup(title: String, content: String) -> void:
 	title_label.text = title
