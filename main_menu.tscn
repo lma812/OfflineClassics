@@ -2,8 +2,9 @@
 
 [ext_resource type="Script" uid="uid://nihl883ib80q" path="res://main_menu.gd" id="1_script"]
 [ext_resource type="Theme" uid="uid://ks3p2rm03p40" path="res://shared/theme/game_colors.tres" id="2_theme"]
-[ext_resource type="PackedScene" uid="uid://cqq18aoccdlj" path="res://shared/GameCard.tscn" id="3_card"]
+[ext_resource type="PackedScene" path="res://shared/GameCard.tscn" id="3_card"]
 [ext_resource type="FontFile" uid="uid://jncjukutvyor" path="res://shared/fonts/nirakolu/Nirakolu.otf" id="4_font"]
+[ext_resource type="Texture2D" uid="uid://d2ivrf0ddkrgr" path="res://shared/assets/fish.png" id="5_glbon"]
 
 [sub_resource type="StyleBoxFlat" id="BgStyle"]
 bg_color = Color(0.08235294, 0.18431373, 0.2627451, 1)
@@ -46,7 +47,7 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxEmpty" id="EmptyStyle"]
 
-[node name="MainMenu" type="Control" unique_id=1601880567]
+[node name="MainMenu" type="Control" unique_id=1601880567 node_paths=PackedStringArray("fish")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,6 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_script")
+fish = NodePath("Background/Control/Fish")
 
 [node name="Top Bar" type="ColorRect" parent="." unique_id=1700180791]
 z_index = 1
@@ -86,6 +88,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("BgStyle")
+
+[node name="Control" type="Control" parent="Background" unique_id=833367594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fish" type="Sprite2D" parent="Background/Control" unique_id=1574689025]
+position = Vector2(80, 256)
+scale = Vector2(0.10119052, 0.09895837)
+texture = ExtResource("5_glbon")
 
 [node name="BgGlow" type="ColorRect" parent="." unique_id=1113495743]
 layout_mode = 0

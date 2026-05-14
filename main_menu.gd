@@ -74,11 +74,13 @@ var GAMES: Array = [
 @onready var dots_row: HBoxContainer = $MarginContainer/Layout/DotsBar/DotsRow
 @onready var prev_btn: Button = $MarginContainer/Layout/DotsBar/PrevBtn
 @onready var next_btn: Button = $MarginContainer/Layout/DotsBar/NextBtn
+@export var fish: Node2D
 
 var base_left_x: float = 0.0
 var base_center_x: float = 0.0
 var base_right_x: float = 0.0
 
+var _original_position: Vector2
 
 # ─── Ready ───────────────────────────────────────────────────────────────────
 func _ready() -> void:
@@ -90,7 +92,11 @@ func _ready() -> void:
 	base_center_x = center_card.position.x
 	base_right_x = right_card.position.x
 	_refresh_cards(false)
+	_original_position = fish.position
+	# for the fish animation
+	_run_loop()
 	_entrance_anim()
+
 
 func _entrance_anim() -> void:
 	modulate.a = 0.0
@@ -291,3 +297,29 @@ func _on_info_pressed(game_name: String, card: Panel) -> void:
 	
 	var info_btn: Button = card.get_node("MarginContainer/VBoxContainer/InfoButton")
 	instance.set_position_near(info_btn.global_position + Vector2(10, 0))
+
+# FISH JUMP 
+func _run_loop() -> void:
+	while true:
+		await _trigger_jump_sequence()
+		
+func _trigger_jump_sequence() -> void:
+	fish.position = _original_position
+	fish.visible = true
+
+	var move_tween: Tween = create_tween().set_parallel(true)
+	move_tween.tween_property(fish, "position:x", fish.position.x + 550, 0.8)
+
+	var jump_tween: Tween = create_tween()
+	jump_tween.tween_property(fish, "position:y", fish.position.y - 210, 0.4)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	jump_tween.tween_property(fish, "position:y", fish.position.y, 0.4)\
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+	var rot_tween: Tween = create_tween()
+	rot_tween.tween_property(fish, "rotation_degrees", 0.0, 0.4)
+	rot_tween.tween_property(fish, "rotation_degrees", 40.0, 0.4)
+	rot_tween.tween_property(fish, "rotation_degrees", -40.0, 0.01)
+
+	await rot_tween.finished
+	fish.visible = false
